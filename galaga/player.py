@@ -15,10 +15,12 @@ class Player(object):
         fill = "blue", width = 3)
 
     def leftMove(self):
-        self.cx -= 5
+        if self.cx-10 > 250:
+            self.cx -= 5
 
     def rightMove(self):
-        self.cx += 5
+        if self.cx+10 < 750:
+            self.cx += 5
 
 def appStarted(app):
     app.myPlayer = Player(500,450)
