@@ -1,4 +1,4 @@
-import cmu_112_graphics
+from cmu_112_graphics import *
 
 class Background(object):
     def __init__(self, width, height):
@@ -8,3 +8,4 @@ class Background(object):
     def redraw(self, app, canvas):
         pass
 
+runApp(width=500, height=500)
