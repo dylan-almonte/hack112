@@ -10,14 +10,25 @@ class Player(object):
         self.IsAlive = True
         self.IsHit = False
 
-    
     def redraw(self, app, canvas):
         canvas.create_rectangle(self.cx-10, self.cy-10,self.cx+10,self.cy+10,
         fill = "blue", width = 3)
 
+    def leftMove(self):
+        self.cx -= 5
+
+    def rightMove(self):
+        self.cx += 5
+
 def appStarted(app):
     app.myPlayer = Player(500,450)
 
+def keyPressed(app, event):
+    if event.key == "Left":
+        app.myPlayer.leftMove()
+    if event.key == "Right":
+        app.myPlayer.rightMove()
+    
 
 def redrawAll(app, canvas):
     app.myPlayer.redraw(app,canvas)
