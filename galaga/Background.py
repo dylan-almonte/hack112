@@ -8,5 +8,3 @@ class Background(object):
     def redraw(self, app, canvas):
         pass
 
-    
-
