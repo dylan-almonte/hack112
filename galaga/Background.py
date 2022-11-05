@@ -6,6 +6,13 @@ class Background(object):
         self.height = height #height 500
 
     def redraw(self, app, canvas):
-        pass
+        canvas.create_rectangle(app.width/4,0,app.width*3/4,app.height, fill = "black")
 
-runApp(width=500, height=500)
+
+
+
+GalagaBackground = Background(500,500)
+
+def runGalaga(app, canvas):
+    runApp()
+    GalagaBackground.redraw(app, canvas)
