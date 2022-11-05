@@ -15,8 +15,6 @@ class Player(object):
         canvas.create_rectangle(self.cx-10, self.cy-10,self.cx+10,self.cy+10,
         fill = "blue", width = 3)
 
-    
-
 def appStarted(app):
     app.myPlayer = Player(500,450)
 
