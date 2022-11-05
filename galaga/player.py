@@ -15,10 +15,12 @@ class Player(object):
         fill = "blue", width = 3)
 
     def leftMove(self):
-        self.cx -= 5
+        if self.cx-10 > 250:
+            self.cx -= 5
 
     def rightMove(self):
-        self.cx += 5
+        if self.cx+10 < 750:
+            self.cx += 5
 
 def appStarted(app):
     app.myPlayer = Player(500,450)
@@ -32,10 +34,6 @@ def keyPressed(app, event):
 
 def redrawAll(app, canvas):
     app.myPlayer.redraw(app,canvas)
-
-    
-
-
 
 runApp(width = 1000, height = 500)
 
