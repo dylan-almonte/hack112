@@ -10,9 +10,3 @@ class Background(object):
 
 
 
-
-GalagaBackground = Background(500,500)
-
-def runGalaga(app, canvas):
-    runApp()
-    GalagaBackground.redraw(app, canvas)
