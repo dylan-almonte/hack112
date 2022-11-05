@@ -27,8 +27,8 @@ class Background(object):
         if starState > 0:
             canvas.create_oval(cx-r, cy-r, cx+r, cy+r, fill = f"{starColor}")
     
-    def drawLife(self, app, canvas, cx, cy, width):
-        canvas.create_rectangle
+    def drawLife(self, app, canvas, tlx, tly, width):
+        canvas.create_rectangle(tlx, tly, tlx+width, tly+width, fill = 'blue')
     
     def timerFired(self, app):
         for star in self.stars:
@@ -54,6 +54,12 @@ def redrawAll(app, canvas):
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
+    
+    for x in range(app.background.lives):
+        width = 40
+        tlx = 10 + (40*x)
+        tly = 50
+        app.background.drawLife(app, canvas, tlx, tly, width)
 
 
 
