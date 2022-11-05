@@ -5,7 +5,7 @@ class Enemy:
         drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
     Size: int = 10
 
-    def __init__(self, x, y, health):
+    def __init__(self, x, y, health, radius):
         self.health: int = health
 
         """
@@ -13,6 +13,7 @@ class Enemy:
         """
         self.x: int = x
         self.y: int = y
+        self.radius = radius
 
     def isHit(self, player_missles) -> bool:
         '''
@@ -31,4 +32,7 @@ class Enemy:
                 return True
         return False
 
-    def move(self,)
+    # del enenmy fucnton
+    # move funciton
+    #
+    # def move(self,)
