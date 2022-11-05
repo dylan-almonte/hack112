@@ -33,9 +33,5 @@ def keyPressed(app, event):
 def redrawAll(app, canvas):
     app.myPlayer.redraw(app,canvas)
 
-    
-
-
-
 runApp(width = 1000, height = 500)
 
