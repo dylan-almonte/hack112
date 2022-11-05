@@ -13,14 +13,18 @@ class Player(object):
     
     def redraw(self, app, canvas):
         canvas.create_rectangle(self.cx-10, self.cy-10,self.cx+10,self.cy+10,
-        fill = "blue", widht = 3)
+        fill = "blue", width = 3)
 
     
 
+def appStarted(app):
+    app.myPlayer = Player(500,450)
 
 
 def redrawAll(app, canvas):
-    pass
+    app.myPlayer.redraw(app,canvas)
+
+    
 
 
 
