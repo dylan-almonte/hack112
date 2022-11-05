@@ -1,7 +1,10 @@
-import cmu_112_graphics
+from cmu_112_graphics import *
 
-def appStarted(app):
-    app.enemyImage1 = app.loadImage('testImage2.gif')
-    
-def redrawAll(app, canvas):
-    canvas.create_image(200, 300, image=ImageTk.PhotoImage(app.image1))
+
+def appStarted(app, size):
+    app.hitBox = 5 #Change hitbox depending on enemy later //TODO
+    app.enemyImage = app.loadImage('enemy_bumblebee.png')
+
+
+def returnEnemyImage1(app):
+    return ImageTk.PhotoImage(app.enemyImage)

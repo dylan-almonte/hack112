@@ -1,6 +1,8 @@
 
 class Enemy:
-
+    '''def redrawAll(app, canvas):
+        drawImageWithSizeBelowIt(app, canvas, app.image1, 200, 300)
+        drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
     Size: int = 10
 
     def __init__(self, x, y, health):
@@ -19,6 +21,12 @@ class Enemy:
         '''
         self.health -= 1
         for missle_xy in player_missles:
+            cx, cy = missle_xy [0], missle_xy [1]
+            
+            if (abs(cx - self.x) < self.hitBox and
+                abs(cy - self.y) < self.hitBox):
+                deleteEnemy()
+
             if (self.x, self.y) in missle_xy:
                 return True
         return False
