@@ -5,5 +5,8 @@ class Background(object):
         self.width = width #width 500
         self.height = height #height 500
 
+    def redraw(self, app, canvas):
+        pass
+
     
 
