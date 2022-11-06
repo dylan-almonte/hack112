@@ -1,6 +1,6 @@
 from cmu_112_graphics import *
 import time
-
+from Background import Background
 
 class Player(object):
     def __init__(self, cx, cy, sprite, bulletSprite, explosionSprite):
