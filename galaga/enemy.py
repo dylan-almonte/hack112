@@ -19,7 +19,7 @@ class Enemy:
         iterates through the player missles and checks if the missiles are in the 
         enemy hitbox and returns a bool 
         '''
-        self.health -= 1
+
         for missle_xy in player_missles:
             cx, cy = missle_xy[0], missle_xy[1]
 
