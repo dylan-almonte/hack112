@@ -56,25 +56,12 @@ class Player(object):
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
             if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
-                print("Hit")
                 self.IsHit = True
-                print(self.IsHit)
                 return True
         return False
     
-    def playerIsInvulnerable(self):
-        if self.isHit == True:
-            self.IsInvulnerable = True
-            self.isHit = False
-    
     def playerInvulnerability(self, timer):
         pass
-
-        
-
-    
-
-        
 
 
 # def appStarted(app):
