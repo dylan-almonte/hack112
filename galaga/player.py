@@ -1,4 +1,5 @@
 from cmu_112_graphics import *
+import time
 
 
 class Player(object):
@@ -13,22 +14,31 @@ class Player(object):
         self.bulletSprite = bulletSprite
 
     def redraw(self, app, canvas):
-        canvas.create_image(self.cx,self.cy, 
-        image = ImageTk.PhotoImage(self.sprite))
+        if self.IsHit == False:
+            canvas.create_image(self.cx,self.cy, 
+            image = ImageTk.PhotoImage(self.sprite))
+
+    def redrawExplosion(self, app, canvas, images):
+        if self.IsHit == True:
+            self.count = time.time()
+            pass
 
 
     def leftMove(self):
-        if self.cx-self.radius > 250:
-            self.cx -= 10
+        if self.IsHit == False:
+            if self.cx-self.radius > 250:
+                self.cx -= 10
 
     def rightMove(self):
-        if self.cx+self.radius < 750:
-            self.cx += 10
+        if self.IsHIt == False:
+            if self.cx+self.radius < 750:
+                self.cx += 10
 
 
     def fireBullet(self):
-        bullet = [self.cx, self.cy-20, True]
-        self.bulletList.append(bullet)
+        if self.IsHit == False:
+            bullet = [self.cx, self.cy-20, True]
+            self.bulletList.append(bullet)
 
     def drawBullet(self, app, canvas):
         for bullet in self.bulletList:
@@ -43,14 +53,13 @@ class Player(object):
             bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
+        print(self.IsHit)
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
-            if (abs(cx - self.cx) < self.radius and
-                    abs(cy - self.cy) < self.radius):
-                self.isHit = True
+            if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                 print("Hit")
+                self.isHit = True
                 return True
-            print("Not Hit")
         return False
     
     def playerIsInvulnerable(self):
