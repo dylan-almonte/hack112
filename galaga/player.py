@@ -7,7 +7,6 @@ class Player(object):
         self.cy = cy
         self.radius = 25
         self.sprite = sprite
-        self.lives = 3
         self.IsHit = False
         self.IsInvulnerable = False
         self.bulletList = []
@@ -49,7 +48,6 @@ class Player(object):
             if (abs(cx - self.cx) < self.radius and
                     abs(cy - self.cy) < self.radius):
                 self.isHit = True
-                self.lives -= 1
                 print("Hit")
                 return True
             print("Not Hit")
