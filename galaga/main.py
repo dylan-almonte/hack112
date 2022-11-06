@@ -5,9 +5,11 @@ from enemyWave import EnemyWave
 
 
 def appStarted(app):
+    app.playerImage = app.loadImage("bumblebee.png")
+    app.playerSprite = app.scaleImage(app.playerImage, 1/10)
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450)
+    app.myPlayer = Player(500, 450,app.playerSprite)
     app.enemyWave = EnemyWave()
     app.bulletTime = 0
     app.bulletCounter = 0
