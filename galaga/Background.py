@@ -36,7 +36,7 @@ class Background(object):
     def timerFired(self, app):
         app.totalTime += 1
         for star in self.stars:
-            star[1] += 15
+            star[1] += 30
             if star[1] > 500:
                 self.stars.remove(star)
             star[4] *= -1
