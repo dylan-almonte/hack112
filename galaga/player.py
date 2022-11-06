@@ -21,11 +21,11 @@ class Player(object):
 
     def leftMove(self):
         if self.cx-self.radius > 250:
-            self.cx -= 1
+            self.cx -= 10
 
     def rightMove(self):
         if self.cx+self.radius < 750:
-            self.cx += 1
+            self.cx += 10
 
     def fireBullet(self):
         bullet = [self.cx, self.cy-20, True]
