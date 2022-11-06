@@ -17,7 +17,7 @@ def appStarted(app):
 
     # temp
     app.enemyImage = app.loadImage("bumblebee.png")
-    app.enemySprite = app.scaleImage(app.enemyImage, 1/2)
+    app.enemySprite = app.scaleImage(app.enemyImage, 1/10)
 
     app.background = Background(500, 500)
     app.totalTime = 0
@@ -28,6 +28,8 @@ def appStarted(app):
     app.bulletTime = 0
     app.bulletCounter = 0
 
+
+    app.timerDelay = 1
 
 
 def timerFired(app):
