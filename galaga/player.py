@@ -5,7 +5,7 @@ class Player(object):
     def __init__(self, cx, cy, sprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 20
+        self.radius = 15
         self.sprite = sprite
         self.lives = 3
         self.IsAlive = True
