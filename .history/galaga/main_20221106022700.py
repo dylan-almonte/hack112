@@ -28,6 +28,8 @@ def appStarted(app):
     app.bulletTime = 0
     app.bulletCounter = 0
 
+    app.score = Score()
+
 
 
 

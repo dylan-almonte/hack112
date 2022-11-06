@@ -68,11 +68,13 @@ class enemy1(Enemy):
         x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
         self.x = x
             
-    def updateEnemyYpos(self):
+def updateEnemyYpos(self):
         # oldY = 0
         # tInit = enemy1.curveTime
         time = self.time
-        period = 40
+        moveOverTime = enemy1.horizontalTime
+        moveDownTime = moveOverTime + enemy1.verticalTime
+        period = moveDownTime
         
 
         # if time <= tInit:
@@ -80,7 +82,7 @@ class enemy1(Enemy):
         
         # time = time - tInit
        
-        if time % period == 0:
+        if time % period == moveDownTime:
             self.y += 13
         
 

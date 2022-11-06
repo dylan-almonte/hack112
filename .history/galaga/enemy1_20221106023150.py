@@ -72,7 +72,7 @@ class enemy1(Enemy):
         # oldY = 0
         # tInit = enemy1.curveTime
         time = self.time
-        period = 40
+        period = 44
         
 
         # if time <= tInit:
