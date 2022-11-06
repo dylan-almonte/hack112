@@ -6,7 +6,7 @@ class Player(object):
     def __init__(self, cx, cy, sprite, bulletSprite, explosionSprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 23
+        self.radius = 25
         self.sprite = sprite
         self.IsHit = False
         self.IsInvulnerable = False
