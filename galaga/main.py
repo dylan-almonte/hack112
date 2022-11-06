@@ -12,8 +12,8 @@ def appStarted(app):
     app.playerLives = app.scaleImage(app.playerImage, 1/30)
 
     # bullet 
-    app.bulletImage = app.loadImage("goodgalagamissile")
-    app.playerBullet = app.scaleImage(app.bulletImage, 1/20)
+    app.bulletImage = app.loadImage("goodgalagamissile.png")
+    app.playerBullet = app.scaleImage(app.bulletImage, 1/80)
 
     # temp
     app.enemyImage = app.loadImage("bumblebee.png")
