@@ -69,7 +69,6 @@ def timerFired(app):
     app.timerDelay = 100
     app.myPlayer.timerFired(app)
     
-
 def redrawAll(app, canvas):
     app.myPlayer.redraw(app,canvas)
     app.myPlayer.drawBullet(app, canvas)
