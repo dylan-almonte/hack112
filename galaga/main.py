@@ -68,7 +68,6 @@ def appStarted(app):
 
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
-    print(lives)
     app.enemy.updateEnemyTime()
     app.enemy.updateEnemyXpos()
     app.enemy.updateEnemyYpos()
@@ -79,8 +78,8 @@ def timerFired(app):
     if app.bulletTime % 5 == 0:
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
-    app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
-    app.myPlayer.playerIsHit(app.enemy.bullets, app.background.lives)
+    # app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
+    app.myPlayer.playerIsHit(app.enemy.bullets, app.background)
 
     app.enemyTime += 1
     app.enemyTime %= 1000

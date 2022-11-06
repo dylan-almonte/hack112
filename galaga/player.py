@@ -70,13 +70,13 @@ class Player(object):
                 self.bulletList.remove(bullet)
             bullet[1] -= 30
 
-    def playerIsHit(self, enemyMissiles, lives):
+    def playerIsHit(self, enemyMissiles, background):
         if self.IsHit == False:
             for missile in enemyMissiles:
                 cx, cy = missile[0], missile[1]
                 if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                     self.IsHit = True
-                    lives -= 1
+                    background.lives -= 1
                     self.baseTime = time.time()
                     return True
             return False
