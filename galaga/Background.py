@@ -66,4 +66,4 @@ def redrawAll(app, canvas):
         cy = 470
         app.background.drawLife(app, canvas, cx, cy, app.finalLives)
 
-runApp(width = 1000,height = 500)
+# runApp(width = 1000,height = 500)

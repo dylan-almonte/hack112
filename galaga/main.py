@@ -9,6 +9,8 @@ def appStarted(app):
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/30)
 
+    app.playerLives = app.scaleImage(app.playerImage, 1/30)
+
     # temp
     app.enemyImage = app.loadImage("bumblebee.png")
     app.enemySprite = app.scaleImage(app.enemyImage, 1/2)
@@ -58,10 +60,9 @@ def redrawAll(app, canvas):
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
     for x in range(app.background.lives):
-        width = 30
-        tlx = 260 + (40*x)
-        tly = 460
-        app.background.drawLife(app, canvas, tlx, tly, width)
+        cx = 280 + (40*x)
+        cy = 480
+        app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
