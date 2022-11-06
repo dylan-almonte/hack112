@@ -31,6 +31,11 @@ class EnemyWave():
         for enemy in EnemyWave.enemyList:
             EnemyWave.bulletList.extend(enemy.bulletList)
 
+    def EnemyHit(self, player_missles):
+        for enemy in EnemyWave.enemyList:
+            if enemy.isHit(player_missles):
+                self.deleteEnemy(enemy)
+
     def deleteEnemy(self, enemy):
 
         EnemyWave.enemyList.remove(enemy)
