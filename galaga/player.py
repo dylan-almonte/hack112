@@ -54,8 +54,9 @@ class Player(object):
 
 
 def appStarted(app):
-    app.myPlayer = Player(500, 450)
-
+    app.myPlayer = Player(500,450)
+    app.bulletCounter = 0
+    app.time = 0
 
 def keyPressed(app, event):
     if event.key == "Left":
@@ -63,11 +64,17 @@ def keyPressed(app, event):
     elif event.key == "Right":
         app.myPlayer.rightMove()
     elif event.key == "Space":
-        app.myPlayer.fireBullet()
+        if app.bulletCounter < 2:
+            app.bulletCounter += 1
+            app.myPlayer.fireBullet()
 
 
+    
 def timerFired(app):
-    # app.timerDelay = 100
+    
+    app.time += 1
+    if app.time % 5 == 0:
+        app.bulletCounter = 0
     app.myPlayer.timerFired(app)
 
 
