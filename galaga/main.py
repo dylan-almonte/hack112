@@ -7,7 +7,7 @@ from enemy import Enemy
 
 def appStarted(app):
     app.playerImage = app.loadImage("playerShip.png")
-    app.playerSprite = app.scaleImage(app.playerImage, 1/20)
+    app.playerSprite = app.scaleImage(app.playerImage, 1/30)
 
     # temp
     app.enemyImage = app.loadImage("bumblebee.png")
