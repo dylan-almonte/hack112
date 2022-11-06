@@ -20,8 +20,8 @@ class Player(object):
 
     def redrawExplosion(self, app, canvas, images):
         if self.IsHit == True:
-            self.count = time.time()
-            pass
+            canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(images[0]))
+
 
 
     def leftMove(self):
@@ -53,28 +53,16 @@ class Player(object):
             bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
-        for missile in enemyMissiles:
-            cx, cy = missile[0], missile[1]
-            if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
-                print("Hit")
-                self.IsHit = True
-                print(self.IsHit)
-                return True
-        return False
-    
-    def playerIsInvulnerable(self):
-        if self.isHit == True:
-            self.IsInvulnerable = True
-            self.isHit = False
+        if self.IsHit == False:
+            for missile in enemyMissiles:
+                cx, cy = missile[0], missile[1]
+                if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
+                    self.IsHit = True
+                    return True
+            return False
     
     def playerInvulnerability(self, timer):
         pass
-
-        
-
-    
-
-        
 
 
 # def appStarted(app):
