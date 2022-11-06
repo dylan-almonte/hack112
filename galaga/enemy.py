@@ -7,7 +7,8 @@ class Enemy:
         drawImageWithSizeBelowIt(app, canvas, app.image1, 200, 300)
         drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
 
-    def __init__(self, x, y, sprite):
+    def __init__(self, x, y, time, sprite):
+        self.initialTime = time
         self.health: int = 2
         """
         positition of Enemy
@@ -49,6 +50,9 @@ class Enemy:
     def updateEnemyPos(self, x, y):
         self.x = x
         self.y = y
+
+    def updateEnemyTime(self, gameTime):
+        return gameTime - self.initialTime
 
     def fireBullet(self):
         bullet = [self.x, self.y]
