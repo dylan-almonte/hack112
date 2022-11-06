@@ -7,15 +7,16 @@ from enemy1 import enemy1
 from Score import Score
 import time
 
+
 def appStarted(app):
     # player ship
     # from: https://www.pngfind.com/mpng/iimowwo_galaga-galaga-ship-hd-png-download/
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/30)
-        # lives
+    # lives
     app.playerLives = app.scaleImage(app.playerImage, 1/30)
 
-        # explosion stages 1-4
+    # explosion stages 1-4
     # all from: https://www.spriters-resource.com/fullview/26482/
     app.explode1 = app.loadImage("pExplosion_1.png")
     app.playerExplosion1 = app.scaleImage(app.explode1, 1)
@@ -25,13 +26,14 @@ def appStarted(app):
     app.playerExplosion3 = app.scaleImage(app.explode3, 1)
     app.explode4 = app.loadImage("pExplosions_4.png")
     app.playerExplosion4 = app.scaleImage(app.explode4, 1)
-    app.explosionAnimation = [app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
+    app.explosionAnimation = [
+        app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
 
-    # lives 
+    # lives
     app.lives = app.loadImage('playerShip.png')
     app.finalLives = app.scaleImage(app.lives, 1/25)
 
-    # bullet 
+    # bullet
     # from: https://toppng.com/photo/168502/alaga-galaga-missile
     app.bulletImage = app.loadImage("goodgalagamissile.png")
     app.playerBullet = app.scaleImage(app.bulletImage, 1/80)
@@ -43,7 +45,8 @@ def appStarted(app):
 
     app.background = Background(500, 500, app.finalLives)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet, app.explosionAnimation)
+    app.myPlayer = Player(500, 450, app.playerSprite,
+                          app.playerBullet, app.explosionAnimation)
 
     app.enemy = enemy1(0, 0, app.enemySprite)
 
@@ -59,9 +62,8 @@ def appStarted(app):
     app.startMenu = True
     app.gameOver = False
 
-
-
-
+    app.enemyTime = 0
+    app.tempPlayerCoors = []
 
 
 def timerFired(app):
@@ -79,12 +81,19 @@ def timerFired(app):
     app.myPlayer.timerFired(app)
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
     app.myPlayer.playerIsHit(app.enemy.bullets, app.background.lives)
-    
+
+    app.enemyTime += 1
+    app.enemyTime %= 1000
+
+    if app.enemyTime % 25 == 0:
+        app.enemy.fireBullet(app.myPlayer.cx, app.myPlayer.cy)
+
+    app.enemy.bulletMovement(app)
+
 
 def keyPressed(app, event):
     # temp
-    if event.key == 'e':
-        app.enemy.fireBullet()
+
     if event.key == "Left":
         app.myPlayer.leftMove()
     elif event.key == "Right":
@@ -99,14 +108,15 @@ def keyPressed(app, event):
         app.startMenu = True
         app.gameOver = False
 
+
 def redrawAll(app, canvas):
-    canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
+    canvas.create_rectangle(0, 0, app.width, app.height, fill="grey6")
     app.background.drawRect(app, canvas)
 
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
-    
+
     if app.startMenu == False and app.gameOver == False:
         print(app.background.lives)
         for x in range(app.background.lives):
@@ -118,21 +128,23 @@ def redrawAll(app, canvas):
         app.myPlayer.redrawExplosion(app, canvas)
         app.myPlayer.drawBullet(app, canvas)
 
-        app.enemy.redraw(app,canvas)
-        app.enemy.drawBullet(app,canvas)
+        app.enemy.redraw(app, canvas)
+        app.enemy.drawBullet(app, canvas)
 
     if app.startMenu == True:
-        canvas.create_image(500, 150, image = ImageTk.PhotoImage(app.menuPicture))
+        canvas.create_image(
+            500, 150, image=ImageTk.PhotoImage(app.menuPicture))
 
-        canvas.create_text(500, 250, text = "P r e s s  'P'  T o  P l a y", 
-                            font = "system 15 bold italic", fill = 'red')
-    
+        canvas.create_text(500, 250, text="P r e s s  'P'  T o  P l a y",
+                           font="system 15 bold italic", fill='red')
+
     if app.gameOver == True:
-        canvas.create_text(500, 250, text = "G A M E  O V E R", 
-                        font = "system 25 bold", fill = 'red')
-        canvas.create_text(500, 350, text = "Press 'r' to restart", fill = 'red')
+        canvas.create_text(500, 250, text="G A M E  O V E R",
+                           font="system 25 bold", fill='red')
+        canvas.create_text(500, 350, text="Press 'r' to restart", fill='red')
 
-    canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
-                                font = "system 20 bold", fill = "grey30")
+    canvas.create_text(100, 50, text=f"SCORE:\n      {app.score.score}",
+                       font="system 20 bold", fill="grey30")
+
 
 runApp(width=1000, height=500)

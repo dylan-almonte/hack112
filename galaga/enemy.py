@@ -54,24 +54,23 @@ class Enemy:
     def updateEnemyTime(self):
         self.time += 2
 
-    def fireBullet(self):
-        bullet = [self.x, self.y]
+    def fireBullet(self, px, py):
+        bullet = [self.x, self.y, self.x-px, py]
         self.bullets.append(bullet)
 
     def drawBullet(self, app, canvas):
         for b in self.bullets:
-            x, y = b
+            x, y = b[0], b[1]
             r = 5
             canvas.create_oval(x-r, y-r, x+r, y+r, fill='red')
 
-    def bulletMovement(self, app, p_x, p_y):  # timer fired
-        px, py = p_x, p_y
+    def bulletMovement(self, app):  # timer fired
+
         for b in self.bullets:
-            dx, dy = self.x - px, self.y-py
             # dx, dy = dx/100, dy
-            b[0] -= dx/75
-            b[1] -= dy/75
-            if b[1] > app.height or b[1] < 0 or b[0] > app.width or b[1] < 0:
+            b[0] -= b[2]/20
+            b[1] += b[3]/20
+            if b[1] > app.height or b[1] < 0 or b[0] > 750 or b[0] < 250:
                 self.bullets.remove(b)
 
     # del enenmy fucnton
