@@ -71,6 +71,7 @@ def keyPressed(app, event):
 
     
 def timerFired(app):
+    
     app.time += 1
     if app.time % 5 == 0:
         app.bulletCounter = 0
