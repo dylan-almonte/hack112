@@ -46,7 +46,7 @@ def appStarted(app):
 
     # start screen
     app.menu = app.loadImage("startScreen.png")
-    app.startMenu = app.scaleImage(app.menu, 1/5)
+    app.menuPicture = app.scaleImage(app.menu, 1/2)
     app.startMenu = True
     app.gameOver = False
 
@@ -88,22 +88,26 @@ def redrawAll(app, canvas):
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
-    
-    for x in range(app.background.lives):
-        cx = 280 + (40*x)
-        cy = 480
-        app.background.drawLife(app, canvas, cx, cy, app.playerLives)
+    if app.startMenu == False:
+        for x in range(app.background.lives):
+            cx = 280 + (40*x)
+            cy = 480
+            app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
-    app.myPlayer.redraw(app, canvas)
-    app.myPlayer.redrawExplosion(app, canvas, app.explosionAnimation)
-    app.myPlayer.drawBullet(app, canvas)
+        app.myPlayer.redraw(app, canvas)
+        app.myPlayer.redrawExplosion(app, canvas, app.explosionAnimation)
+        app.myPlayer.drawBullet(app, canvas)
 
-    app.enemy.redraw(app,canvas)
-    app.enemy.drawBullet(app,canvas)
+        app.enemy.redraw(app,canvas)
+        app.enemy.drawBullet(app,canvas)
 
+    if app.startMenu == True:
+        canvas.create_image(500, 150, image = ImageTk.PhotoImage(app.menuPicture))
 
+        canvas.create_text(500, 250, text = "P r e s s  S p a c e  T o  P l a y", 
+                            font = "system 15 bold italic", fill = 'red')
 
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
-                            font = "system 20 bold", fill = "grey30")
+                                font = "system 20 bold", fill = "grey30")
 
 runApp(width=1000, height=500)
