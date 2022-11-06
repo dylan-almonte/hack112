@@ -31,7 +31,6 @@ def timerFired(app):
     if app.bulletTime % 5 == 0:
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
-
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
 
 
