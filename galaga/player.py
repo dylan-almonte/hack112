@@ -54,9 +54,10 @@ class Player(object):
 
 
 def appStarted(app):
-    app.myPlayer = Player(500,450)
+    app.myPlayer = Player(500, 450)
     app.bulletCounter = 0
     app.time = 0
+
 
 def keyPressed(app, event):
     if event.key == "Left":
@@ -67,6 +68,7 @@ def keyPressed(app, event):
         if app.bulletCounter < 2:
             app.bulletCounter += 1
             app.myPlayer.fireBullet()
+
 
 def timerFired(app):
     app.time += 1
@@ -79,4 +81,4 @@ def redrawAll(app, canvas):
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
 
-runApp(width = 1000, height = 500)
+# runApp(width = 1000, height = 500)
