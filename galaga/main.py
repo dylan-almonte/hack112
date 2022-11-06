@@ -5,6 +5,7 @@ from Background import Background
 from enemyWave import EnemyWave
 from enemy1 import enemy1
 import time
+import random
 
 
 def appStarted(app):
@@ -112,7 +113,7 @@ def timerFired(app):
             app.bulletCounter = 0
         app.myPlayer.timerFired(app)
         # app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
-        for bullet in EnemyWave.bulletList:
+        for bullet in app.enemyWave.bulletList:
             app.myPlayer.playerIsHit(bullet, app.background)
 
         app.enemyTime += 1
@@ -120,6 +121,13 @@ def timerFired(app):
         if app.enemyWave.updateScore(app.myPlayer.bulletList):
             app.score += 20
         app.enemyWave.EnemyHit(app.myPlayer.bulletList)
+
+        if len(app.enemyWave.enemyList) > 0:
+            randEnemy = random.choice(app.enemyWave.enemyList)
+            app.enemyWave.bulletMovement(app)
+            if app.enemyTime % 10 == 0:
+                randEnemy.fireBullet(app.myPlayer.cx, app.myPlayer.cy)
+            app.myPlayer.playerIsHit(randEnemy.bullets, app.background)
 
 
 def keyPressed(app, event):
@@ -160,7 +168,7 @@ def redrawAll(app, canvas):
         app.myPlayer.drawBullet(app, canvas)
 
         app.enemyWave.drawEnemies(app, canvas)
-        # app.enemy.drawBullet(app,canvas)
+        app.enemyWave.drawBullets(app, canvas)
 
     if app.startMenu == True:
         canvas.create_image(
