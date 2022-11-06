@@ -5,7 +5,7 @@ from enemyWave import EnemyWave
 
 
 def appStarted(app):
-    app.playerImage = app.loadImage("bumblebee.png")
+    app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/10)
     app.background = Background(500, 500)
     app.totalTime = 0
