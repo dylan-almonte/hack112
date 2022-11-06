@@ -5,6 +5,7 @@ from Background import Background
 from enemy import Enemy
 from enemy1 import enemy1
 from Score import Score
+import time
 
 def appStarted(app):
     # player ship
@@ -41,7 +42,6 @@ def appStarted(app):
     app.bulletTime = 0
     app.bulletCounter = 0
 
-    app.hitTimer = 0
 
     app.score = Score()
 
@@ -53,7 +53,7 @@ def timerFired(app):
     app.enemy.updateEnemyTime()
     app.enemy.updateEnemyXpos()
     app.enemy.updateEnemyYpos()
-    print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
+    # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1
@@ -64,22 +64,20 @@ def timerFired(app):
     if app.myPlayer.playerIsHit(app.enemy.bullets) == True:
         pass
 
-
-
-
 def keyPressed(app, event):
     # temp
     if event.key == 'e':
         app.enemy.fireBullet()
-
-    if event.key == "Left":
-        app.myPlayer.leftMove()
-    elif event.key == "Right":
-        app.myPlayer.rightMove()
-    elif event.key == "Space":
-        if app.bulletCounter < 2:
-            app.bulletCounter += 1
-            app.myPlayer.fireBullet()
+    
+    if app.myPlayer.IsHit == False:
+        if event.key == "Left":
+            app.myPlayer.leftMove()
+        elif event.key == "Right":
+            app.myPlayer.rightMove()
+        elif event.key == "Space":
+            if app.bulletCounter < 2:
+                app.bulletCounter += 1
+                app.myPlayer.fireBullet()
 
 def redrawAll(app, canvas):
     canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")

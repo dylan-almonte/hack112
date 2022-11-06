@@ -1,4 +1,5 @@
 from cmu_112_graphics import *
+import time
 
 
 class Player(object):
@@ -13,8 +14,15 @@ class Player(object):
         self.bulletSprite = bulletSprite
 
     def redraw(self, app, canvas):
-        canvas.create_image(self.cx,self.cy, 
-        image = ImageTk.PhotoImage(self.sprite))
+        if self.IsHit == False:
+            canvas.create_image(self.cx,self.cy, 
+            image = ImageTk.PhotoImage(self.sprite))
+
+    def redrawExplosion(self, app, canvas, images):
+        if self.IsHit == True:
+            self.count = time.time()
+
+            pass
 
 
     def leftMove(self):
@@ -43,14 +51,13 @@ class Player(object):
             bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
+        print(self.IsHit)
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
             if (abs(cx - self.cx) < self.radius and
                     abs(cy - self.cy) < self.radius):
                 self.isHit = True
-                print("Hit")
                 return True
-            print("Not Hit")
         return False
     
     def playerIsInvulnerable(self):
