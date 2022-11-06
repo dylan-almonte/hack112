@@ -62,9 +62,12 @@ class Enemy:
 
     def bulletMovement(self, app, p_x, p_y):  # timer fired
         for b in self.bullets:
-            dx, dy = self.x - p_x, self.y - p_y
+            dx, dy = self.x - p_x, 1
+            dx, dy = dx/100, dy
+            print("Delta", dx, dy)
             b[0] += dx
             b[1] += dy
+            print("Bullet Position", b[0], b[1])
             if b[1] < app.height:
                 self.bullets.remove(b)
 
