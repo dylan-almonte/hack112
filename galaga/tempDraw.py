@@ -9,7 +9,7 @@ def newStar():
     cy = 0
     colorIndex = random.randint(0, 5)
     starColor = colors[colorIndex]
-    r = 1
+    r = 1.5
     starState = 1
     return [cx, cy, r, starColor, starState]
 
@@ -18,7 +18,7 @@ class Background(object):
         self.width = width #width 500
         self.height = height #height 500
         self.stars = []
-        self.lives = 3 
+        self.lives = 4
 
     def drawRect(self, app, canvas):
         canvas.create_rectangle(app.width/4,0, app.width*3/4, app.height, fill = "black")
@@ -32,7 +32,7 @@ class Background(object):
     
     def timerFired(self, app):
         for star in self.stars:
-            star[1] += 6
+            star[1] += 5
             if star[1] > 500:
                 self.stars.remove(star)
             star[4] *= -1
@@ -56,11 +56,10 @@ def redrawAll(app, canvas):
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
     
     for x in range(app.background.lives):
-        width = 40
-        tlx = 10 + (40*x)
-        tly = 50
+        width = 30
+        tlx = 260 + (40*x)
+        tly = 460
         app.background.drawLife(app, canvas, tlx, tly, width)
-
 
 
 runApp(width = 1000,height = 500)
