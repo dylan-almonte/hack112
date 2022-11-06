@@ -25,6 +25,7 @@ class Enemy:
 
             if (abs(cx - self.x) < self.hitBox and
                     abs(cy - self.y) < self.hitBox):
+
                 return True
                 #health - 1
 
@@ -41,5 +42,5 @@ class Enemy:
     #
     # def move(self,)
 
-    def deleteEnemy()
-    pop enemy
+    # def deleteEnemy()
+    # pop enemy
