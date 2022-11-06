@@ -26,7 +26,6 @@ class Player(object):
 
     def redrawExplosion(self, app, canvas):
         if self.IsHit == True:
-                print("draw explosion")
                 canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
 
 
@@ -57,14 +56,13 @@ class Player(object):
         if self.IsHit == True:
             self.hitTimer = time.time()
             elapsedTime = (self.hitTimer-self.baseTime)
-            print(elapsedTime)
-            if elapsedTime < .2:
+            if elapsedTime < .1:
                 self.exploSprite = self.explosionSprite[0]
-            elif elapsedTime < .4:
+            elif elapsedTime < .2:
                 self.exploSprite = self.explosionSprite[1]
-            elif elapsedTime < .6:
+            elif elapsedTime < .3:
                 self.exploSprite = self.explosionSprite[2]
-            elif elapsedTime < .8:
+            elif elapsedTime < .4:
                 self.exploSprite = self.explosionSprite[3]
 
 
@@ -75,12 +73,13 @@ class Player(object):
                 self.bulletList.remove(bullet)
             bullet[1] -= 30
 
-    def playerIsHit(self, enemyMissiles):
+    def playerIsHit(self, enemyMissiles, lives):
         if self.IsHit == False:
             for missile in enemyMissiles:
                 cx, cy = missile[0], missile[1]
                 if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                     self.IsHit = True
+                    lives -= 1
                     self.baseTime = time.time()
                     return True
             return False
