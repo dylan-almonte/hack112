@@ -91,7 +91,7 @@ def redrawAll(app, canvas):
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
     
-    if app.startMenu == False:
+    if app.startMenu == False and app.gameOver == False:
         for x in range(app.background.lives):
             cx = 280 + (40*x)
             cy = 480
@@ -109,6 +109,10 @@ def redrawAll(app, canvas):
 
         canvas.create_text(500, 250, text = "P r e s s  'P'  T o  P l a y", 
                             font = "system 15 bold italic", fill = 'red')
+    
+    if app.gameOver == True:
+        canvas.create_text(500, 250, text = "G A M E  O V E R", 
+                        font = "system 25 bold", fill = 'red')
 
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
                                 font = "system 20 bold", fill = "grey30")
