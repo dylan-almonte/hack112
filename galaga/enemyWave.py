@@ -1,8 +1,10 @@
 import random
 import enemyWaveGenerator
 
+
 class EnemyWave ():
     enemyList = []
+
     def spawnEnemy(self, app):
         EnemyWave.enemyList.append(
             enemyWaveGenerator.spawnEnemy(self, app))
@@ -14,5 +16,8 @@ class EnemyWave ():
             enemy.drawEnemy()
         
 
-    
-    #return drawings of enemies
+    def deleteEnemy(self, enemy):
+
+        EnemyWave.enemyList.remove(enemy)
+
+    # return drawings of enemies
