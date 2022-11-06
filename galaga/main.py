@@ -125,9 +125,11 @@ def timerFired(app):
         if len(app.enemyWave.enemyList) > 0:
             randEnemy = random.choice(app.enemyWave.enemyList)
             app.enemyWave.bulletMovement(app)
+            app.enemyWave.updateBullets()
             if app.enemyTime % 10 == 0:
                 randEnemy.fireBullet(app.myPlayer.cx, app.myPlayer.cy)
-            app.myPlayer.playerIsHit(randEnemy.bullets, app.background)
+                app.myPlayer.playerIsHit(
+                    randEnemy.bullets, app.background)
 
 
 def keyPressed(app, event):
@@ -146,6 +148,10 @@ def keyPressed(app, event):
         elif event.key == 'r':
             app.startMenu = True
             app.gameOver = False
+    if app.gameOver == True and event.key == 'r':
+        for e in app.enemyWave.enemyList:
+            app.enemyWave.deleteEnemy(e)
+        appStarted(app)
 
 
 def redrawAll(app, canvas):

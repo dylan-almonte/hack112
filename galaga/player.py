@@ -2,6 +2,7 @@ from cmu_112_graphics import *
 import time
 from Background import Background
 
+
 class Player(object):
     def __init__(self, cx, cy, sprite, bulletSprite, explosionSprite):
         self.cx = cx
@@ -17,22 +18,17 @@ class Player(object):
         self.blank = False
         self.exploSprite = self.explosionSprite[0]
 
-
-        
-
     def redraw(self, app, canvas):
         if self.IsHit == False:
-            canvas.create_image(self.cx,self.cy, 
-            image = ImageTk.PhotoImage(self.sprite))
+            canvas.create_image(self.cx, self.cy,
+                                image=ImageTk.PhotoImage(self.sprite))
 
     def redrawExplosion(self, app, canvas):
         if self.blank == True:
             pass
         elif self.IsHit == True:
-            canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
-        
-
-
+            canvas.create_image(
+                self.cx, self.cy, image=ImageTk.PhotoImage(self.exploSprite))
 
     def leftMove(self):
         if self.IsHit == False:
@@ -44,7 +40,6 @@ class Player(object):
             if self.cx+self.radius < 750:
                 self.cx += 10
 
-
     def fireBullet(self):
         if self.IsHit == False:
             bullet = [self.cx, self.cy-20, True]
@@ -54,7 +49,8 @@ class Player(object):
         for bullet in self.bulletList:
             cx, cy, state = bullet
             if state:
-                canvas.create_image(cx,cy, image = ImageTk.PhotoImage(self.bulletSprite))
+                canvas.create_image(
+                    cx, cy, image=ImageTk.PhotoImage(self.bulletSprite))
 
     def timerFired(self, app):
         if self.IsHit == True:
@@ -73,7 +69,6 @@ class Player(object):
             else:
                 self.IsHit, self.blank = False, False
 
-
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
@@ -89,7 +84,7 @@ class Player(object):
                     self.baseTime = time.time()
                     return True
             return False
-    
+
     def playerInvulnerability(self, timer):
         pass
 
