@@ -114,7 +114,7 @@ def keyPressed(app, event):
 def redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, app.width, app.height, fill="grey6")
     app.background.drawRect(app, canvas)
-    
+
 
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
