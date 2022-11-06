@@ -28,7 +28,7 @@ class EnemyWave():
     def updateBullets(self):
         EnemyWave.bulletList = []
         for enemy in EnemyWave.enemyList:
-            EnemyWave.bulletList.extend(enemy.bulletList)
+            EnemyWave.bulletList.extend([enemy.bullets])
 
     def drawBullets(self, app, canvas):
         for enemy in EnemyWave.enemyList:
@@ -38,6 +38,7 @@ class EnemyWave():
         for enemy in EnemyWave.enemyList:
             if enemy.isHit(player_missles):
                 self.deleteEnemy(enemy)
+
     def updateScore(self, player_missles):
         for enemy in EnemyWave.enemyList:
             if enemy.isHit(player_missles):
