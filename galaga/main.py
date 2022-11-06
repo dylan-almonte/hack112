@@ -54,9 +54,8 @@ def keyPressed(app, event):
             app.bulletCounter += 1
             app.myPlayer.fireBullet()
 
-
 def redrawAll(app, canvas):
-
+    canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
     app.background.drawRect(app, canvas)
 
     for star in app.background.stars:
@@ -75,4 +74,4 @@ def redrawAll(app, canvas):
     app.enemy.drawBullet(app, canvas)
 
 
-# runApp(width=1000, height=500)
+runApp(width=1000, height=500)
