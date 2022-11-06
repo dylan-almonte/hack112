@@ -49,7 +49,9 @@ class Player(object):
                     abs(cy - self.cy) < self.radius):
                 self.isHit = True
                 self.lives -= 1
-        return False
+                print("Hit")
+            print("Not Hit")
+        
 
 
 # def appStarted(app):
