@@ -68,16 +68,14 @@ def keyPressed(app, event):
     # temp
     if event.key == 'e':
         app.enemy.fireBullet()
-    
-    if app.myPlayer.IsHit == False:
-        if event.key == "Left":
-            app.myPlayer.leftMove()
-        elif event.key == "Right":
-            app.myPlayer.rightMove()
-        elif event.key == "Space":
-            if app.bulletCounter < 2:
-                app.bulletCounter += 1
-                app.myPlayer.fireBullet()
+    if event.key == "Left":
+        app.myPlayer.leftMove()
+    elif event.key == "Right":
+        app.myPlayer.rightMove()
+    elif event.key == "Space":
+        if app.bulletCounter < 2:
+            app.bulletCounter += 1
+            app.myPlayer.fireBullet()
 
 def redrawAll(app, canvas):
     canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
