@@ -64,7 +64,9 @@ class enemy1(Enemy):
         #     x = enemy1.rightCol - enemy1.dx * time
         # elif time % period <= period:
         #     x = enemy1.leftCol
+        period = 126
 
+        time = time % period
         x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
         self.x = x
             

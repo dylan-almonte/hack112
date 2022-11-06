@@ -52,7 +52,7 @@ class Enemy:
         self.y = y
 
     def updateEnemyTime(self):
-        self.time += 2
+        return self.time += 1
 
     def fireBullet(self):
         bullet = [self.x, self.y]

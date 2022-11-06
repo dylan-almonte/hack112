@@ -49,23 +49,21 @@ class enemy1(Enemy):
         moveLeftTime = moveDownTime + enemy1.horizontalTime
         period = moveLeftTime
         
-        # if time <= tInit and enemy1.curve == True:
-        #     x = enemy1.boardRight - enemy1.curveRad * math.sin(time/20)
-        # else:
-        #     enemy1.curve = False
+        if time <= tInit and enemy1.curve = True:
+            x = enemy1.boardRight - enemy1.curveRad * math.sin(time/20)
+        else:
+            enemy1.curve = False
 
-        # time = time - tInit
+        time = time - tInit
 
-        # if time % period <= moveRightTime:
-        #     x = enemy1.leftCol + enemy1.dx * time
-        # elif time % period <= moveDownTime:
-        #     x = enemy1.rightCol
-        # elif time % period <= moveLeftTime:
-        #     x = enemy1.rightCol - enemy1.dx * time
-        # elif time % period <= period:
-        #     x = enemy1.leftCol
-
-        x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
+        if time % period <= moveRightTime:
+            x = enemy1.leftCol + enemy1.dx * time
+        elif time % period <= moveDownTime:
+            x = enemy1.rightCol
+        elif time % period <= moveLeftTime:
+            x = enemy1.rightCol - enemy1.dx * time
+        elif time % period <= period:
+            x = enemy1.leftCol
         self.x = x
             
 # def updateEnemyYpos(self, time):

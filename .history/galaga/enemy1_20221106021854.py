@@ -65,7 +65,11 @@ class enemy1(Enemy):
         # elif time % period <= period:
         #     x = enemy1.leftCol
 
-        x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
+        time = time % period
+        if time < 10:
+            x = enemy1.rightCol - 450 * math.cos(time/20)
+        else:
+            x = 450 * math.cos(time/20)
         self.x = x
             
 # def updateEnemyYpos(self, time):
