@@ -1,5 +1,5 @@
 from player import Player
-
+from cmu_112_graphics import *
 from Background import Background
 
 
@@ -25,8 +25,6 @@ def keyPressed(app, event):
 
 
 def redrawAll(app, canvas):
-    app.myPlayer.redraw(app, canvas)
-    app.myPlayer.drawBullet(app, canvas)
 
     app.background.drawRect(app, canvas)
 
@@ -39,6 +37,9 @@ def redrawAll(app, canvas):
         tlx = 260 + (40*x)
         tly = 460
         app.background.drawLife(app, canvas, tlx, tly, width)
+
+    app.myPlayer.redraw(app, canvas)
+    app.myPlayer.drawBullet(app, canvas)
 
 
 runApp(width=1000, height=500)
