@@ -71,4 +71,4 @@ def redrawAll(app, canvas):
     app.enemy.drawBullet(app, canvas)
 
 
-# runApp(width=1000, height=500)
+runApp(width=1000, height=500)
