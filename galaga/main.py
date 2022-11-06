@@ -9,13 +9,19 @@ def appStarted(app):
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/30)
 
+    app.playerLives = app.scaleImage(app.playerImage, 1/30)
+
+    # bullet 
+    app.bulletImage = app.loadImage("goodgalagamissile.png")
+    app.playerBullet = app.scaleImage(app.bulletImage, 1/80)
+
     # temp
     app.enemyImage = app.loadImage("bumblebee.png")
     app.enemySprite = app.scaleImage(app.enemyImage, 1/2)
 
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450, app.playerSprite)
+    app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet)
 
     app.enemy = Enemy(500, 20, app.enemySprite)
 
@@ -48,9 +54,8 @@ def keyPressed(app, event):
             app.bulletCounter += 1
             app.myPlayer.fireBullet()
 
-
 def redrawAll(app, canvas):
-
+    canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
     app.background.drawRect(app, canvas)
 
     for star in app.background.stars:
@@ -58,10 +63,9 @@ def redrawAll(app, canvas):
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
     for x in range(app.background.lives):
-        width = 30
-        tlx = 260 + (40*x)
-        tly = 460
-        app.background.drawLife(app, canvas, tlx, tly, width)
+        cx = 280 + (40*x)
+        cy = 480
+        app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)

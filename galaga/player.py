@@ -2,15 +2,16 @@ from cmu_112_graphics import *
 
 
 class Player(object):
-    def __init__(self, cx, cy, sprite):
+    def __init__(self, cx, cy, sprite, bulletSprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 10
+        self.radius = 25
         self.sprite = sprite
         self.lives = 3
         self.IsAlive = True
         self.IsHit = False
         self.bulletList = []
+        self.bulletSprite = bulletSprite
 
     def redraw(self, app, canvas):
         canvas.create_image(self.cx,self.cy, image = ImageTk.PhotoImage(self.sprite))
@@ -19,11 +20,15 @@ class Player(object):
         #                         fill="blue", width=3)
 
     def leftMove(self):
-        if self.cx-10 > 250:
+        if self.cx-self.radius > 250:
+            self.cx -= 10
+            self.cx -= 10
             self.cx -= 10
 
     def rightMove(self):
-        if self.cx+10 < 750:
+        if self.cx+self.radius < 750:
+            self.cx += 10
+            self.cx += 10
             self.cx += 10
 
     def fireBullet(self):
@@ -34,14 +39,13 @@ class Player(object):
         for bullet in self.bulletList:
             cx, cy, state = bullet
             if state:
-                canvas.create_rectangle(cx-2.5, cy-5,
-                                        cx+2.5, cy+5, fill="yellow")
+                canvas.create_image(cx,cy, image = ImageTk.PhotoImage(self.bulletSprite))
 
     def timerFired(self, app):
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
-            bullet[1] -= 15
+            bullet[1] -= 10
 
     def playerIsHit(self, enemyMissiles):
         for missile in enemyMissiles:
@@ -53,7 +57,7 @@ class Player(object):
 
 
 # def appStarted(app):
-#     app.image = app.loadImage("bumblebee.png")
+#     app.image = app.loadImage("playerShip.png")
 #     app.sprite = app.scaleImage(app.image, 1/10)
 #     app.myPlayer = Player(500, 450, app.sprite)
 #     app.bulletCounter = 0
