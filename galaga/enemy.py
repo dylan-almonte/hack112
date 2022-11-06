@@ -65,14 +65,15 @@ class Enemy:
             canvas.create_oval(x-r, y-r, x+r, y+r, fill='red')
 
     def bulletMovement(self, app, p_x, p_y):  # timer fired
+        px, py = p_x, p_y
         for b in self.bullets:
-            dx, dy = self.x - p_x, 1
-            dx, dy = dx/100, dy
+            dx, dy = self.x - px, self.y-py
+            # dx, dy = dx/100, dy
             print("Delta", dx, dy)
-            b[0] += dx
-            b[1] += dy
+            b[0] -= dx/75
+            b[1] -= dy/75
             print("Bullet Position", b[0], b[1])
-            if b[1] < app.height:
+            if b[1] > app.height or b[1] < 0 or b[0] > app.width or b[1] < 0:
                 self.bullets.remove(b)
 
     # del enenmy fucnton
