@@ -5,7 +5,7 @@ class Player(object):
     def __init__(self, cx, cy, sprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 30
+        self.radius = 15
         self.sprite = sprite
         self.lives = 3
         self.IsAlive = True
@@ -20,11 +20,11 @@ class Player(object):
         #                         fill="blue", width=3)
 
     def leftMove(self):
-        if self.cx-10 > 250:
+        if self.cx-self.radius > 250:
             self.cx -= 10
 
     def rightMove(self):
-        if self.cx+10 < 750:
+        if self.cx+self.radius < 750:
             self.cx += 10
 
     def fireBullet(self):
