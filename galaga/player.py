@@ -9,6 +9,7 @@ class Player(object):
         self.sprite = sprite
         self.lives = 3
         self.IsHit = False
+        self.IsInvulnerable = False
         self.bulletList = []
         self.bulletSprite = bulletSprite
 
@@ -50,7 +51,22 @@ class Player(object):
                 self.isHit = True
                 self.lives -= 1
                 print("Hit")
+                return True
             print("Not Hit")
+        return False
+    
+    def playerIsInvulnerable(self):
+        if self.isHit == True:
+            self.IsInvulnerable = True
+            self.isHit = False
+    
+    def playerInvulnerability(self, timer):
+        pass
+
+        
+
+    
+
         
 
 
