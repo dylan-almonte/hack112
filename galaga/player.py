@@ -2,7 +2,7 @@ from cmu_112_graphics import *
 
 
 class Player(object):
-    def __init__(self, cx, cy, sprite):
+    def __init__(self, cx, cy, sprite, bulletSprite):
         self.cx = cx
         self.cy = cy
         self.radius = 25
@@ -11,7 +11,7 @@ class Player(object):
         self.IsAlive = True
         self.IsHit = False
         self.bulletList = []
-        print(cx, cy)
+        self.bulletSprite = bulletSprite
 
     def redraw(self, app, canvas):
         canvas.create_image(self.cx,self.cy, image = ImageTk.PhotoImage(self.sprite))
@@ -35,8 +35,7 @@ class Player(object):
         for bullet in self.bulletList:
             cx, cy, state = bullet
             if state:
-                canvas.create_rectangle(cx-2.5, cy-5,
-                                        cx+2.5, cy+5, fill="yellow")
+                canvas.create_image(cx,cy, image = ImageTk.PhotoImage(self.bulletSprite)
 
     def timerFired(self, app):
         for bullet in self.bulletList:
