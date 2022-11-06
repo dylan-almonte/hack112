@@ -14,6 +14,9 @@ class Player(object):
         self.bulletSprite = bulletSprite
         self.baseTime = 0
         self.explosionSprite = explosionSprite
+        self.exploSprite = self.explosionSprite[0]
+
+
         
 
     def redraw(self, app, canvas):
@@ -21,10 +24,9 @@ class Player(object):
             canvas.create_image(self.cx,self.cy, 
             image = ImageTk.PhotoImage(self.sprite))
 
-    def redrawExplosion(self, app, canvas, images):
+    def redrawExplosion(self, app, canvas):
         if self.IsHit == True:
-            for image in images:
-                canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(image))
+                canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
 
 
 
@@ -53,7 +55,18 @@ class Player(object):
     def timerFired(self, app):
         if self.IsHit == True:
             self.hitTimer = time.time()
-            print(self.hitTimer-self.baseTime)
+            elapsedTime = (self.hitTimer-self.baseTime)
+            if elapsedTime < 2:
+                self.exploSprite = self.explosionSprite[0]
+            elif elapsedTime < 4:
+                self.exploSprite = self.explosionSprite[1]
+            elif elapsedTime < 6:
+                self.exploSprite = self.explosionSprite[2]
+            elif elapsedTime < 8:
+                self.exploSprite = self.explosionSprite[3]
+
+
+
 
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:

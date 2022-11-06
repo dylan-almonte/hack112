@@ -95,7 +95,7 @@ def redrawAll(app, canvas):
         app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
     app.myPlayer.redraw(app, canvas)
-    app.myPlayer.redrawExplosion(app, canvas, app.explosionAnimation)
+    app.myPlayer.redrawExplosion(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
 
     app.enemy.redraw(app,canvas)
