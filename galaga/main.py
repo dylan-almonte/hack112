@@ -42,8 +42,10 @@ def appStarted(app):
     app.bulletTime = 0
     app.bulletCounter = 0
 
-
     app.score = Score()
+
+    app.startMenu = True
+    app.gameOver = False
 
 
 
@@ -84,7 +86,7 @@ def redrawAll(app, canvas):
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
-
+    
     for x in range(app.background.lives):
         cx = 280 + (40*x)
         cy = 480
