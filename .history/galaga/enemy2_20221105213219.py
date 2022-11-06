@@ -1,7 +1,7 @@
 from cmu_112_graphics import *
 from enemy import Enemy
 
-class enemy2:
+class enemy1:
     def __init__(self):
         #TODO change to custom movements
         self.moveBasic = [  [1, 0]

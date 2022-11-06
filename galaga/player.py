@@ -1,5 +1,6 @@
 from cmu_112_graphics import *
 
+
 class Player(object):
     def __init__(self, cx, cy):
         self.cx = cx
@@ -14,8 +15,8 @@ class Player(object):
 
     def redraw(self, app, canvas):
         canvas.create_rectangle(self.cx-self.radius, self.cy-self.radius,
-        self.cx+self.radius,self.cy+self.radius,
-        fill = "blue", width = 3)
+                                self.cx+self.radius, self.cy+self.radius,
+                                fill="blue", width=3)
 
     def leftMove(self):
         if self.cx-10 > 250:
@@ -26,7 +27,7 @@ class Player(object):
             self.cx += 10
 
     def fireBullet(self):
-        bullet = [self.cx,self.cy-20,True]
+        bullet = [self.cx, self.cy-20, True]
         self.bulletList.append(bullet)
 
     def drawBullet(self, app, canvas):
@@ -34,9 +35,9 @@ class Player(object):
             cx, cy, state = bullet
             if state:
                 canvas.create_rectangle(cx-2.5, cy-5,
-                                    cx+2.5,cy+5, fill = "yellow")
+                                        cx+2.5, cy+5, fill="yellow")
 
-    def timerFired(self,app):
+    def timerFired(self, app):
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
@@ -45,14 +46,12 @@ class Player(object):
     def playerIsHit(self, enemyMissiles):
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
-            
-            if (abs(cx - self.cx) < self.radius and 
-                abs(cy - self.cy) < self.radius):
+
+            if (abs(cx - self.cx) < self.radius and
+                    abs(cy - self.cy) < self.radius):
                 return True
         return False
 
-
-            
 
 def appStarted(app):
     app.myPlayer = Player(500,450)
@@ -76,11 +75,10 @@ def timerFired(app):
     if app.time % 5 == 0:
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
-    
+
 
 def redrawAll(app, canvas):
-    app.myPlayer.redraw(app,canvas)
+    app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
 
-runApp(width = 1000, height = 500)
-
+# runApp(width = 1000, height = 500)

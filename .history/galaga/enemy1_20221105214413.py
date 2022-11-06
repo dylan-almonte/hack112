@@ -16,15 +16,12 @@ class enemy1:
         self.timeToMove = 42
 
 
-    def drawEnemy(self, canvas):
-        canvas.create_oval(self.x-5, self.y-5, self.x+5, self.y+5,
-                            fill = 'red')
-    # def appStarted(app):
-    #     app.hitBox = 5 #Change hitbox depending on enemy later //TODO
-    #     app.enemyImage = app.loadImage('enemy_bumblebee.png')
+    def appStarted(app):
+        app.hitBox = 5 #Change hitbox depending on enemy later //TODO
+        app.enemyImage = app.loadImage('enemy_bumblebee.png')
 
-    # def enemyImage(app):
-    #     return ImageTk.PhotoImage(app.enemyImage)
+    def enemyImage(app):
+        return ImageTk.PhotoImage(app.enemyImage)
     
     def getVel(self, time):
         if time % self.timeToMove == 1:
