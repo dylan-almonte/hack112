@@ -45,13 +45,13 @@ class enemy1(Enemy):
         image = ImageTk.PhotoImage(app.enemyImage))
 
     def updateEnemyXpos(self):
-        time = self.time - self.initialTime
+        time = self.time 
         x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
         self.x = x
             
     def updateEnemyYpos(self):
-        time = self.time
-        period = 30
+        time = self.time - self.initialTime
+        period = 40
         
         if time % period == 0:
             self.y += 13
