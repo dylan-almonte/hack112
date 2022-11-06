@@ -25,7 +25,7 @@ class enemy1(Enemy):
     dy = 30/2
 
     time = 0
-    def __init__(self):
+    def __init__(self,):
         super().__init__()
         self.x = 0
         self.y = 0
