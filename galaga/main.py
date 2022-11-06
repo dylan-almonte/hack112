@@ -24,7 +24,6 @@ def appStarted(app):
     app.explode4 = app.loadImage("pExplosions_4.png")
     app.playerExplosion4 = app.scaleImage(app.explode4, 1/10)
 
-
     # bullet 
     app.bulletImage = app.loadImage("goodgalagamissile.png")
     app.playerBullet = app.scaleImage(app.bulletImage, 1/80)
@@ -44,6 +43,9 @@ def appStarted(app):
 
     app.score = Score()
 
+    # start screen
+    app.menu = app.loadImage("startScreen.png")
+    app.startMenu = app.scaleImage(app.menu, 1/5)
     app.startMenu = True
     app.gameOver = False
 
@@ -86,19 +88,22 @@ def redrawAll(app, canvas):
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
-    
-    for x in range(app.background.lives):
-        cx = 280 + (40*x)
-        cy = 480
-        app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
-    app.myPlayer.redraw(app, canvas)
-    app.myPlayer.drawBullet(app, canvas)
+    if app.startMenu == False and app.gameOver == False:
+        for x in range(app.background.lives):
+            cx = 280 + (40*x)
+            cy = 480
+            app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
-    app.enemy.redraw(app, canvas)
-    app.enemy.drawBullet(app, canvas)
+        app.myPlayer.redraw(app, canvas)
+        app.myPlayer.drawBullet(app, canvas)
 
-    canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
-                        font = "system 20 bold", fill = "grey30")
+        app.enemy.redraw(app, canvas)
+        app.enemy.drawBullet(app, canvas)
+
+        canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
+                            font = "system 20 bold", fill = "grey30")
+    elif app.startMenu == True:
+        canvas.create_image(500, 300, image = ImageTk.PhotoImage(app.startMenu))
 
 runApp(width=1000, height=500)
