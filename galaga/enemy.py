@@ -47,7 +47,7 @@ class Enemy:
         canvas.create_image(
             self.x, self.y, image=ImageTk.PhotoImage(self.sprite))
 
-    def updateEnemyPos(self, x, y):
+    def updateEnemyPosition(self, x, y):
         self.x = x
         self.y = y
 
