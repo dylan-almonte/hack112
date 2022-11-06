@@ -121,7 +121,7 @@ def redrawAll(app, canvas):
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
     if app.startMenu == False and app.gameOver == False:
-        print(app.background.lives)
+        
         for x in range(app.background.lives):
             cx = 280 + (40*x)
             cy = 480
