@@ -11,7 +11,7 @@ class enemyWaveGenerator():
 
     def spawnEnemy(self, app):
         position = random.randint(0, 10)
-        boardCell = app.width//10
-        xPos = position * boardCell
+        boardCell = app.width//20
+        xPos = position * boardCell + 250
         a = enemy1(xPos, 10)
         return a
