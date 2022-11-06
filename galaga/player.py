@@ -6,7 +6,7 @@ class Player(object):
     def __init__(self, cx, cy, sprite, bulletSprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 25
+        self.radius = 23
         self.sprite = sprite
         self.IsHit = False
         self.IsInvulnerable = False
@@ -30,7 +30,7 @@ class Player(object):
                 self.cx -= 10
 
     def rightMove(self):
-        if self.IsHIt == False:
+        if self.IsHit == False:
             if self.cx+self.radius < 750:
                 self.cx += 10
 
@@ -53,12 +53,12 @@ class Player(object):
             bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
-        print(self.IsHit)
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
             if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                 print("Hit")
-                self.isHit = True
+                self.IsHit = True
+                print(self.IsHit)
                 return True
         return False
     
