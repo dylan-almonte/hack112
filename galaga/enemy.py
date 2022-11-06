@@ -21,16 +21,18 @@ class Enemy:
         '''
         self.health -= 1
         for missle_xy in player_missles:
-            cx, cy = missle_xy [0], missle_xy [1]
-            
+            cx, cy = missle_xy[0], missle_xy[1]
+
             if (abs(cx - self.x) < self.hitBox and
-                abs(cy - self.y) < self.hitBox):
+                    abs(cy - self.y) < self.hitBox):
+                return True
                 #health - 1
-            
+
         return False
-#In the game class, if health == 0, delete Enemy
+# In the game class, if health == 0, delete Enemy
+
     def move(self, velocity):
-        xVel, yVel = velocity[0], velocity [1]
+        xVel, yVel = velocity[0], velocity[1]
         self.x += xVel
         self.y += yVel
 
@@ -40,4 +42,4 @@ class Enemy:
     # def move(self,)
 
     def deleteEnemy()
-        pop enemy
+    pop enemy

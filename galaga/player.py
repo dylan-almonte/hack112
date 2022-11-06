@@ -36,7 +36,6 @@ class Player(object):
 
     def timerFired(self,app):
         for bullet in self.bulletList:
-            print(self.bulletList)
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
             bullet[1] -= 15
