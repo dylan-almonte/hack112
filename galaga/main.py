@@ -16,13 +16,13 @@ def appStarted(app):
 
         # explosion stages 1-4
     app.explode1 = app.loadImage("pExplosion_1.png")
-    app.playerExplosion1 = app.scaleImage(app.explode1, 1/40)
+    app.playerExplosion1 = app.scaleImage(app.explode1, 1)
     app.explode2 = app.loadImage("pExplosions_2.png")
-    app.playerExplosion2 = app.scaleImage(app.explode2, 1/40)
+    app.playerExplosion2 = app.scaleImage(app.explode2, 1)
     app.explode3 = app.loadImage("pExplosion_3.png")
-    app.playerExplosion3 = app.scaleImage(app.explode3, 1/40)
+    app.playerExplosion3 = app.scaleImage(app.explode3, 1)
     app.explode4 = app.loadImage("pExplosions_4.png")
-    app.playerExplosion4 = app.scaleImage(app.explode4, 1/2.5)
+    app.playerExplosion4 = app.scaleImage(app.explode4, 1)
     app.explosionAnimation = [app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
 
     # bullet 
