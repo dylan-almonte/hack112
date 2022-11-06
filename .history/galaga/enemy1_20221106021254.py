@@ -56,16 +56,14 @@ class enemy1(Enemy):
 
         # time = time - tInit
 
-        # if time % period <= moveRightTime:
-        #     x = enemy1.leftCol + enemy1.dx * time
-        # elif time % period <= moveDownTime:
-        #     x = enemy1.rightCol
-        # elif time % period <= moveLeftTime:
-        #     x = enemy1.rightCol - enemy1.dx * time
-        # elif time % period <= period:
-        #     x = enemy1.leftCol
-
-        x = (enemy1.rightCol + enemy1.leftCol)/2 + 225 * math.sin(time/20)
+        if time % period <= moveRightTime:
+            x = enemy1.leftCol + enemy1.dx * time
+        elif time % period <= moveDownTime:
+            x = enemy1.rightCol
+        elif time % period <= moveLeftTime:
+            x = enemy1.rightCol - enemy1.dx * time
+        elif time % period <= period:
+            x = enemy1.leftCol
         self.x = x
             
 # def updateEnemyYpos(self, time):

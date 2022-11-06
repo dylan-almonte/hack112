@@ -52,7 +52,7 @@ class Enemy:
         self.y = y
 
     def updateEnemyTime(self):
-        self.time += 2
+        return self.time += 1
 
     def fireBullet(self):
         bullet = [self.x, self.y]
@@ -69,8 +69,10 @@ class Enemy:
         for b in self.bullets:
             dx, dy = self.x - px, self.y-py
             # dx, dy = dx/100, dy
+            print("Delta", dx, dy)
             b[0] -= dx/75
             b[1] -= dy/75
+            print("Bullet Position", b[0], b[1])
             if b[1] > app.height or b[1] < 0 or b[0] > app.width or b[1] < 0:
                 self.bullets.remove(b)
 
