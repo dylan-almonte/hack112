@@ -4,6 +4,7 @@ from Background import Background
 # from enemyWave import EnemyWave
 from enemy import Enemy
 from enemy1 import enemy1
+from Score import Score
 
 def appStarted(app):
     app.playerImage = app.loadImage("playerShip.png")
@@ -81,12 +82,7 @@ def redrawAll(app, canvas):
     app.enemy.redraw(app, canvas)
     app.enemy.drawBullet(app, canvas)
 
-<<<<<<< HEAD
-
-
-=======
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
                         font = "system 20 bold", fill = "grey30")
->>>>>>> 103651ce7eccec834b647282935aacabbf245fa7
 
 runApp(width=1000, height=500)
