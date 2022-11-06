@@ -29,7 +29,6 @@ def appStarted(app):
     app.bulletCounter = 0
 
 
-    app.timerDelay = 1
 
 
 def timerFired(app):
