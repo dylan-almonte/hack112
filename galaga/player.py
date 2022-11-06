@@ -72,7 +72,7 @@ def keyPressed(app, event):
 
 def timerFired(app):
     app.time += 1
-    if app.time % 5 == 0:
+    if app.time % 2 == 0:
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
 
