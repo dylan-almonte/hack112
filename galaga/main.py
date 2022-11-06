@@ -82,5 +82,4 @@ def redrawAll(app, canvas):
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
                         font = "system 20 bold", fill = "grey30")
 
-
 runApp(width=1000, height=500)
