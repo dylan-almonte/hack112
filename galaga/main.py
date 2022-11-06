@@ -44,6 +44,7 @@ def timerFired(app):
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
+    app.myPlayer.playerIsHit(app.enemy.)
 
 
 def keyPressed(app, event):
