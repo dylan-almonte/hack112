@@ -82,6 +82,9 @@ def keyPressed(app, event):
             app.myPlayer.fireBullet()
     elif event.key == 'p':
         app.startMenu = False
+    elif event.key == 'r':
+        app.startMenu = True
+        app.gameOver = False
 
 def redrawAll(app, canvas):
     canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
@@ -113,6 +116,7 @@ def redrawAll(app, canvas):
     if app.gameOver == True:
         canvas.create_text(500, 250, text = "G A M E  O V E R", 
                         font = "system 25 bold", fill = 'red')
+        canvas.create_text(500, 350, text = "Press 'r' to restart", fill = 'red')
 
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
                                 font = "system 20 bold", fill = "grey30")
