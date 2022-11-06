@@ -30,7 +30,7 @@ class enemy1(Enemy):
         super().__init__(x, y)
         self.x = 0
         self.y = 0
-
+        self.sprite = 
 
         # self.moveBasic = [[1, 0]
         #                   [-1, 0]

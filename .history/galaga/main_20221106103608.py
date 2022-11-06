@@ -54,7 +54,7 @@ def appStarted(app):
 
 
 def timerFired(app):
-    app.enemyWave.spawnEnemy()
+    app.enemyWave.spawnEnemy(app)
     
     # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
     app.background.timerFired(app)

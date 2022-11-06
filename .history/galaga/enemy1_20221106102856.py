@@ -26,21 +26,16 @@ class enemy1(Enemy):
     dx = (boardRight - boardLeft)/horizontalTime
     dy = 30/2
 
-    def __init__(self, x, y):
-        super().__init__(x, y)
+    def __init__(self, x, y, sprite):
+        super().__init__(x, y, sprite)
         self.x = 0
         self.y = 0
-
+        
 
         # self.moveBasic = [[1, 0]
         #                   [-1, 0]
         #                   [0, 1]]
         # self.timeToMove = 42
-
-
-    '''def appStarted(app, size):
-        app.hitBox = 5 #Change hitbox depending on enemy later //TODO
-        app.enemyImage = app.loadImage('enemy_bumblebee.png')'''
 
     def drawEnemy(self, canvas):
         canvas.create_oval(self.x-5, self.y-5, self.x+5, self.y+5,

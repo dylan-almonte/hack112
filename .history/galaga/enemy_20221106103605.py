@@ -7,7 +7,7 @@ class Enemy:
         drawImageWithSizeBelowIt(app, canvas, app.image1, 200, 300)
         drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, sprite):
         self.health: int = 2
         self.time = 0
         """
@@ -17,11 +17,9 @@ class Enemy:
         self.y: int = y
         self.size: int = 0
         self.bullets: list = []
-        self.xi = self.x
-        self.yi = self.y
 
         # temporaty
- 
+        self.sprite = sprite
 
     def isHit(self, player_missles) -> bool:
         '''
@@ -65,7 +63,7 @@ class Enemy:
     def bulletMovement(self, app, p_x, p_y):  # timer fired
         px, py = p_x, p_y
         for b in self.bullets:
-            dx, dy = self.xi - px, self.yi-py
+            dx, dy = self.x - px, self.y-py
             # dx, dy = dx/100, dy
             b[0] -= dx/75
             b[1] -= dy/75

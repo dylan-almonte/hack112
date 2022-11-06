@@ -2,7 +2,7 @@ from player import Player
 from cmu_112_graphics import *
 from Background import Background
 # from enemyWave import EnemyWave
-from enemyWave import EnemyWave
+from enemy import Enemy
 from enemy1 import enemy1
 from Score import Score
 import time
@@ -37,7 +37,7 @@ def appStarted(app):
     app.totalTime = 0
     app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet, app.explosionAnimation)
 
-    app.enemyWave = EnemyWave()
+    app.enemy = enemy1(0, 0, app.enemySprite)
 
     app.bulletTime = 0
     app.bulletCounter = 0
@@ -54,8 +54,10 @@ def appStarted(app):
 
 
 def timerFired(app):
-    app.enemyWave.spawnEnemy()
-    
+    # app.enemyWave.spawnEnemy(app)
+    app.enemy.updateEnemyTime()
+    app.enemy.updateEnemyXpos()
+    app.enemy.updateEnemyYpos()
     # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
     app.background.timerFired(app)
     app.background.newStar(app)

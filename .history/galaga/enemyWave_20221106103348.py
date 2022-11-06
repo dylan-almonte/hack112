@@ -5,16 +5,19 @@ from enemyWaveGenerator import enemyWaveGenerator
 class EnemyWave():
     enemyList = []
 
-    def spawnEnemy(self):
+    def spawnEnemy(self, app):
         EnemyWave.enemyList.append(
-            enemyWaveGenerator.spawnEnemy(self))
+            enemyWaveGenerator.spawnEnemy(self, app))
 
     def moveEnemies(self):
         for enemy in EnemyWave.enemyList:
             enemy.updateEnemyTime()
             enemy.updateEnemyXpos()
             enemy.updateEnemyYpos()
-            enemy.drawEnemy()
+            #enemy.updateYpos()
+            # vel = enemy.getVel(time)
+            # enemy.move(vel[0], vel[1])
+            # enemy.drawEnemy()
 
     def drawEnemies(self, canvas):
         for enemy in EnemyWave.enemyList:
