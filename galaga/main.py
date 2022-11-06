@@ -53,6 +53,19 @@ def appStarted(app):
     app.bulletTime = 0
     app.bulletCounter = 0
 
+    # enemy explosions 
+    # from: https://www.spriters-resource.com/fullview/26482/
+    app.enExplode1 = app.loadImage("enemyExplosion_1.png")
+    app.enemyExplosion1 = app.scaleImage(app.enExplode1, 1/2)
+    app.enExplode2 = app.loadImage("enemyExplosion_2.png")
+    app.enemyExplosion2 = app.scaleImage(app.enExplode2, 1/2)
+    app.enExplode3 = app.loadImage("enemyExplosion_3.png")
+    app.enemyExplosion3 = app.scaleImage(app.enExplode3, 1/2)
+    app.enExplode4 = app.loadImage("enemyExplosion_4.png")
+    app.enemyExplosion4 = app.scaleImage(app.enExplode4, 1/2)
+    app.enExplode5 = app.loadImage("enemyExplosion_5.png")
+    app.enemyExplosion5 = app.scaleImage(app.enExplode5, 1/2)
+
     app.score = Score()
 
     # start screen
