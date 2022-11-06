@@ -35,7 +35,7 @@ def appStarted(app):
 
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet)
+    app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet, app.explosionAnimation)
 
     app.enemy = enemy1(0, 0, app.enemySprite)
 
@@ -66,8 +66,7 @@ def timerFired(app):
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
-    if app.myPlayer.playerIsHit(app.enemy.bullets) == True:
-        pass
+    app.myPlayer.playerIsHit(app.enemy.bullets)
 
 def keyPressed(app, event):
     # temp
