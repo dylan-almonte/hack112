@@ -8,16 +8,14 @@ class Player(object):
         self.radius = 25
         self.sprite = sprite
         self.lives = 3
-        self.IsAlive = True
         self.IsHit = False
         self.bulletList = []
         self.bulletSprite = bulletSprite
 
     def redraw(self, app, canvas):
-        canvas.create_image(self.cx,self.cy, image = ImageTk.PhotoImage(self.sprite))
-        # canvas.create_rectangle(self.cx-self.radius, self.cy-self.radius,
-        #                         self.cx+self.radius, self.cy+self.radius,
-        #                         fill="blue", width=3)
+        canvas.create_image(self.cx,self.cy, 
+        image = ImageTk.PhotoImage(self.sprite))
+
 
     def leftMove(self):
         if self.cx-self.radius > 250:
@@ -49,7 +47,8 @@ class Player(object):
             cx, cy = missile[0], missile[1]
             if (abs(cx - self.cx) < self.radius and
                     abs(cy - self.cy) < self.radius):
-                return True
+                self.isHit = True
+                self.lives -= 1
         return False
 
 
