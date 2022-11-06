@@ -28,7 +28,8 @@ class Background(object):
             if starState > 0:
                 canvas.create_oval(cx-r, cy-r, cx+r, cy+r, fill = f"{starColor}")
     
-    def drawLife(self, app, canvas, tlx, tly, width):
+    def drawLife(self, app, canvas, tlx, tly, width): 
+        # TODO change this blue rect to the player sprite
         canvas.create_rectangle(tlx, tly, tlx+width, tly+width, fill = 'blue')
     
     def timerFired(self, app):
