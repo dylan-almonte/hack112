@@ -28,7 +28,7 @@ class enemy1(Enemy):
         super().__init__(x, y, sprite)
         self.x = 0
         self.y = 0
-        
+        self.time = Enemy.time
 
         # self.moveBasic = [[1, 0]
         #                   [-1, 0]

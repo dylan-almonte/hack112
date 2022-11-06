@@ -34,7 +34,7 @@ def appStarted(app):
 
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
-    app.enemy.updateEnemyXpos()
+    app.enemy.updatePosition()
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1

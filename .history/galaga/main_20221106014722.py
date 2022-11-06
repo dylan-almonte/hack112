@@ -23,7 +23,7 @@ def appStarted(app):
     app.totalTime = 0
     app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet)
 
-    app.enemy = enemy1(0, 0, app.enemySprite)
+    app.enemy = enemy1(app.enemySprite)
 
     app.bulletTime = 0
     app.bulletCounter = 0
@@ -34,7 +34,7 @@ def appStarted(app):
 
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
-    app.enemy.updateEnemyXpos()
+    app.enemy.updatePosition()
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1
