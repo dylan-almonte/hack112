@@ -22,14 +22,11 @@ class Player(object):
     def leftMove(self):
         if self.cx-self.radius > 250:
             self.cx -= 10
-            self.cx -= 10
-            self.cx -= 10
 
     def rightMove(self):
         if self.cx+self.radius < 750:
             self.cx += 10
-            self.cx += 10
-            self.cx += 10
+
 
     def fireBullet(self):
         bullet = [self.cx, self.cy-20, True]
@@ -45,7 +42,7 @@ class Player(object):
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
-            bullet[1] -= 10
+            bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
         for missile in enemyMissiles:
