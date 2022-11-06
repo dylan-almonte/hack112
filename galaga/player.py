@@ -6,7 +6,7 @@ class Player(object):
     def __init__(self, cx, cy, sprite, bulletSprite, explosionSprite):
         self.cx = cx
         self.cy = cy
-        self.radius = 23
+        self.radius = 25
         self.sprite = sprite
         self.IsHit = False
         self.IsInvulnerable = False
@@ -14,6 +14,7 @@ class Player(object):
         self.bulletSprite = bulletSprite
         self.baseTime = 0
         self.explosionSprite = explosionSprite
+        self.blank = False
         self.exploSprite = self.explosionSprite[0]
 
 
@@ -25,8 +26,11 @@ class Player(object):
             image = ImageTk.PhotoImage(self.sprite))
 
     def redrawExplosion(self, app, canvas):
-        if self.IsHit == True:
-                canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
+        if self.blank == True:
+            pass
+        elif self.IsHit == True:
+            canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
+        
 
 
 
@@ -64,6 +68,11 @@ class Player(object):
                 self.exploSprite = self.explosionSprite[2]
             elif elapsedTime < .4:
                 self.exploSprite = self.explosionSprite[3]
+            elif elapsedTime < .6:
+                self.blank = True
+            else:
+                self.IsHit, self.blank = False, False
+
 
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
