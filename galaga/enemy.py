@@ -1,41 +1,63 @@
+from player import Player
+from cmu_112_graphics import *
+
 
 class Enemy:
     '''def redrawAll(app, canvas):
         drawImageWithSizeBelowIt(app, canvas, app.image1, 200, 300)
         drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
-    Size: int = 10
 
-    def __init__(self, x, y, health, radius):
-        self.health: int = health
+    def __init__(self, x, y):
+        self.health: int = 2
         """
         positition of Enemy
         """
         self.x: int = x
         self.y: int = y
-        self.radius = radius
+        self.size: int = 0
+        self.bullets: list = []
 
     def isHit(self, player_missles) -> bool:
         '''
         iterates through the player missles and checks if the missiles are in the 
         enemy hitbox and returns a bool 
         '''
-
         for missle_xy in player_missles:
-            cx, cy = missle_xy[0], missle_xy[1]
-
-            if (abs(cx - self.x) < self.hitBox and
-                    abs(cy - self.y) < self.hitBox):
-
+            cx, cy = missle_xy
+            if (abs(cx - self.x) < self.size and
+                    abs(cy - self.y) < self.size):
+                self.health -= 1
                 return True
                 #health - 1
 
         return False
 # In the game class, if health == 0, delete Enemy
 
-    def move(self, velocity):
-        xVel, yVel = velocity[0], velocity[1]
-        self.x += xVel
-        self.y += yVel
+    # def move(self, velocity):
+    #     xVel, yVel = velocity[0], velocity[1]
+    #     self.x += xVel
+    #     self.y += yVel
+    # TODO  create a different function that updates the enmeny posistion
+
+    def updateEnemyPos(self, x, y):
+        self.x = x
+        self.y = y
+
+    def fireBullet(self):
+        bullet = [self.x, self.y]
+        self.bullets.append(bullet)
+
+    def drawBullet(self, app, canvas):
+        for b in self.bullets:
+            x, y = b
+            r = 2
+            canvas.create(x-r, y-r, x+r, y+r, fill='red')
+
+    def bulletMovement(self, app, p_x, p_y):  # timer fired
+        for b in self.bullets:
+            dx, dy = self.x - p_x, self.y - p_y
+            b[0] += dx
+            b[1] -= dy
 
     # del enenmy fucnton
     # move funciton
