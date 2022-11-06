@@ -7,7 +7,7 @@ class Background(object):
         self.width = width  # width 500
         self.height = height  # height 500
         self.stars = []
-        self.lives = 4
+        self.lives = 4 
 
     def drawRect(self, app, canvas):
         canvas.create_rectangle(
@@ -28,10 +28,10 @@ class Background(object):
             cx, cy, r, starColor, starState = star
             if starState > 0:
                 canvas.create_oval(cx-r, cy-r, cx+r, cy+r, fill=f"{starColor}")
+        
 
-    def drawLife(self, app, canvas, tlx, tly, width):
-        # TODO change this blue rect to the player sprite
-        canvas.create_rectangle(tlx, tly, tlx+width, tly+width, fill='blue')
+    def drawLife(self, app, canvas, cx, cy, finalLives):
+        canvas.create_image(cx, cy, image = ImageTk.PhotoImage(finalLives))
 
     def timerFired(self, app):
         app.totalTime += 1
@@ -42,27 +42,28 @@ class Background(object):
             star[4] *= -1
 
 
-# def appStarted(app):
-#     app.background = Background(500, 500)
-#     app.totalTime = 0
+def appStarted(app):
+    app.background = Background(500, 500)
+    app.totalTime = 0
+    app.lives = app.loadImage('playerShip.png')
+    app.finalLives = app.scaleImage(app.lives, 1/25)
 
 
-# def timerFired(app):
-#     app.background.timerFired(app)
-#     app.background.newStar(app)
+def timerFired(app):
+    app.background.timerFired(app)
+    app.background.newStar(app)
 
 
-# def redrawAll(app, canvas):
-#     app.background.drawRect(app, canvas)
+def redrawAll(app, canvas):
+    app.background.drawRect(app, canvas)
 
-#     for star in app.background.stars:
-#         cx, cy, r, starColor, starState = star
-#         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
+    for star in app.background.stars:
+        cx, cy, r, starColor, starState = star
+        app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
-#     for x in range(app.background.lives):
-#         width = 30
-#         tlx = 260 + (40*x)
-#         tly = 460
-#         app.background.drawLife(app, canvas, tlx, tly, width)
+    for x in range(app.background.lives):
+        cx = 280 + (50*x)
+        cy = 470
+        app.background.drawLife(app, canvas, cx, cy, app.finalLives)
 
-# runApp(width = 1000,height = 500)
+runApp(width = 1000,height = 500)

@@ -57,4 +57,4 @@ def redrawAll(app, canvas):
     app.enemyWave.drawEnemies(canvas)
 
 
-runApp(width=1000, height=500)
+# runApp(width=1000, height=500)
