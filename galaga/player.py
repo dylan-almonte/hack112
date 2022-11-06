@@ -4,6 +4,7 @@ class Player(object):
     def __init__(self, cx, cy):
         self.cx = cx
         self.cy = cy
+        self.radius = 10
         # self.sprite = sprite
         # self.sizing = sizing
         self.lives = 3
@@ -12,7 +13,8 @@ class Player(object):
         self.bulletList = []
 
     def redraw(self, app, canvas):
-        canvas.create_rectangle(self.cx-10, self.cy-10,self.cx+10,self.cy+10,
+        canvas.create_rectangle(self.cx-self.radius, self.cy-self.radius,
+        self.cx+self.radius,self.cy+self.radius,
         fill = "blue", width = 3)
 
     def leftMove(self):
@@ -39,6 +41,17 @@ class Player(object):
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
             bullet[1] -= 15
+
+    def playerIsHit(self, enemyMissiles):
+        for missile in enemyMissiles:
+            cx, cy = missile[0], missile[1]
+            
+            if (abs(cx - self.cx) < self.radius and 
+                abs(cy - self.cy) < self.radius):
+                return True
+        return False
+
+
             
 
 def appStarted(app):
