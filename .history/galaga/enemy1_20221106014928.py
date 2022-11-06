@@ -25,10 +25,9 @@ class enemy1(Enemy):
     dy = 30/2
 
     def __init__(self, x, y, sprite):
-        super().__init__(x, y, sprite)
+        super().__init__(self, x, y, sprite)
         self.x = 0
         self.y = 0
-        
 
         # self.moveBasic = [[1, 0]
         #                   [-1, 0]

@@ -3,7 +3,6 @@ from cmu_112_graphics import *
 from Background import Background
 # from enemyWave import EnemyWave
 from enemy import Enemy
-from Score import Score 
 from enemy1 import enemy1
 
 def appStarted(app):
@@ -28,13 +27,14 @@ def appStarted(app):
 
     app.bulletTime = 0
     app.bulletCounter = 0
+    app.timerDelay = 1
 
-
+    app.timerDelay = 1
 
 
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
-    app.enemy.updateEnemyXpos()
+    app.enemy.updatePosition()
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1
@@ -76,9 +76,6 @@ def redrawAll(app, canvas):
 
     app.enemy.redraw(app, canvas)
     app.enemy.drawBullet(app, canvas)
-
-    canvas.create_text(100, 50, text= f"{app.Score.score}",
-                                    font = "system 20 bold")
 
 
 runApp(width=1000, height=500)
