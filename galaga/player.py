@@ -58,13 +58,13 @@ class Player(object):
             self.hitTimer = time.time()
             elapsedTime = (self.hitTimer-self.baseTime)
             print(elapsedTime)
-            if elapsedTime < .5:
+            if elapsedTime < .2:
                 self.exploSprite = self.explosionSprite[0]
-            elif elapsedTime < 1:
+            elif elapsedTime < .4:
                 self.exploSprite = self.explosionSprite[1]
-            elif elapsedTime < 1.5:
+            elif elapsedTime < .6:
                 self.exploSprite = self.explosionSprite[2]
-            elif elapsedTime < 2:
+            elif elapsedTime < .8:
                 self.exploSprite = self.explosionSprite[3]
 
 
