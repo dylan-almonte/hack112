@@ -66,7 +66,7 @@ def timerFired(app):
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
-    app.myPlayer.playerIsHit(app.enemy.bullets,app.background.lives)
+    app.myPlayer.playerIsHit(app.enemy.bullets, app.background.lives)
 
 def keyPressed(app, event):
     # temp
@@ -95,6 +95,7 @@ def redrawAll(app, canvas):
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
     
     if app.startMenu == False and app.gameOver == False:
+        print(app.background.lives)
         for x in range(app.background.lives):
             cx = 280 + (40*x)
             cy = 480

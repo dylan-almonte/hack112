@@ -80,6 +80,7 @@ class Player(object):
                 if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                     self.IsHit = True
                     lives -= 1
+                    print(lives)
                     self.baseTime = time.time()
                     return True
             return False
