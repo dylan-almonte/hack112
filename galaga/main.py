@@ -120,7 +120,7 @@ def timerFired(app):
         if app.enemyWave.updateScore(app.myPlayer.bulletList):
             app.score += 20
         app.enemyWave.EnemyHit(app.myPlayer.bulletList)
-        
+
 
 def keyPressed(app, event):
     # temp
