@@ -27,7 +27,6 @@ class Player(object):
     def redrawExplosion(self, app, canvas):
         if self.IsHit == True:
                 print("draw explosion")
-
                 canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
 
 
@@ -59,13 +58,13 @@ class Player(object):
             self.hitTimer = time.time()
             elapsedTime = (self.hitTimer-self.baseTime)
             print(elapsedTime)
-            if elapsedTime < 5:
+            if elapsedTime < 2:
                 self.exploSprite = self.explosionSprite[0]
-            elif elapsedTime < 10:
+            elif elapsedTime < 4:
                 self.exploSprite = self.explosionSprite[1]
-            elif elapsedTime < 15:
+            elif elapsedTime < 6:
                 self.exploSprite = self.explosionSprite[2]
-            elif elapsedTime < 20:
+            elif elapsedTime < 8:
                 self.exploSprite = self.explosionSprite[3]
 
 
