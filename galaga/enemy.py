@@ -15,13 +15,12 @@ class Enemy:
         """
         self.x: int = x
         self.y: int = y
-        self.size: int = 0
+        self.size: int = 30
         self.bullets: list = []
         self.xi = self.x
         self.yi = self.y
 
         # temporaty
- 
 
     def isHit(self, player_missles) -> bool:
         '''
@@ -29,7 +28,7 @@ class Enemy:
         enemy hitbox and returns a bool 
         '''
         for missle_xy in player_missles:
-            cx, cy = missle_xy
+            cx, cy = missle_xy[0], missle_xy[1]
             if (abs(cx - self.x) < self.size and
                     abs(cy - self.y) < self.size):
                 self.health -= 1

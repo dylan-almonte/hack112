@@ -54,7 +54,7 @@ def appStarted(app):
     app.bulletCounter = 0
     app.enemySpawnTime = 0
 
-    # enemy explosions 
+    # enemy explosions
     # from: https://www.spriters-resource.com/fullview/26482/
     app.enExplode1 = app.loadImage("enemyExplosion_1.png")
     app.enemyExplosion1 = app.scaleImage(app.enExplode1, 1/2)
@@ -67,7 +67,7 @@ def appStarted(app):
     app.enExplode5 = app.loadImage("enemyExplosion_5.png")
     app.enemyExplosion5 = app.scaleImage(app.enExplode5, 1/2)
 
-    # enemy explosions 
+    # enemy explosions
     # from: https://www.spriters-resource.com/fullview/26482/
     app.enExplode1 = app.loadImage("enemyExplosion_1.png")
     app.enemyExplosion1 = app.scaleImage(app.enExplode1, 1/2)
@@ -104,7 +104,7 @@ def timerFired(app):
         if app.background.lives == 0:
             app.gameOver = True
         # app.enemyWave.spawnEnemy(app)
-        
+
         # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
         app.background.timerFired(app)
         app.background.newStar(app)
@@ -118,7 +118,7 @@ def timerFired(app):
 
         app.enemyTime += 1
         app.enemyTime %= 1000
-
+        app.enemyWave.EnemyHit(app.myPlayer.bulletList)
 
 
 def keyPressed(app, event):
@@ -143,13 +143,12 @@ def redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, app.width, app.height, fill="grey6")
     app.background.drawRect(app, canvas)
 
-
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
     if app.startMenu == False and app.gameOver == False:
-        
+
         for x in range(app.background.lives):
             cx = 280 + (40*x)
             cy = 480
@@ -159,8 +158,8 @@ def redrawAll(app, canvas):
         app.myPlayer.redrawExplosion(app, canvas)
         app.myPlayer.drawBullet(app, canvas)
 
-        app.enemyWave.drawEnemies(app,canvas)
-        #app.enemy.drawBullet(app,canvas)
+        app.enemyWave.drawEnemies(app, canvas)
+        # app.enemy.drawBullet(app,canvas)
 
     if app.startMenu == True:
         canvas.create_image(
