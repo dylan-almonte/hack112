@@ -22,8 +22,8 @@ def appStarted(app):
     app.explode3 = app.loadImage("pExplosion_3.png")
     app.playerExplosion3 = app.scaleImage(app.explode3, 1/40)
     app.explode4 = app.loadImage("pExplosions_4.png")
-    app.playerExplosion4 = app.scaleImage(app.explode4, 1/40)
-    app.explosionAnimation = [app.explode1, app.explode2, app.explode3, app.explode4]
+    app.playerExplosion4 = app.scaleImage(app.explode4, 1/2.5)
+    app.explosionAnimation = [app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
 
     # bullet 
     app.bulletImage = app.loadImage("goodgalagamissile.png")
