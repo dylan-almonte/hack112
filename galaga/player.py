@@ -2,21 +2,21 @@ from cmu_112_graphics import *
 
 
 class Player(object):
-    def __init__(self, cx, cy):
+    def __init__(self, cx, cy, sprite):
         self.cx = cx
         self.cy = cy
         self.radius = 10
-        # self.sprite = sprite
-        # self.sizing = sizing
+        self.sprite = sprite
         self.lives = 3
         self.IsAlive = True
         self.IsHit = False
         self.bulletList = []
 
     def redraw(self, app, canvas):
-        canvas.create_rectangle(self.cx-self.radius, self.cy-self.radius,
-                                self.cx+self.radius, self.cy+self.radius,
-                                fill="blue", width=3)
+        canvas.create_image(self.cx,self.cy, image = ImageTk.PhotoImage(self.sprite))
+        # canvas.create_rectangle(self.cx-self.radius, self.cy-self.radius,
+        #                         self.cx+self.radius, self.cy+self.radius,
+        #                         fill="blue", width=3)
 
     def leftMove(self):
         if self.cx-10 > 250:
@@ -53,7 +53,9 @@ class Player(object):
 
 
 def appStarted(app):
-    app.myPlayer = Player(500, 450)
+    app.image = app.loadImage("bumblebee.png")
+    app.sprite = app.scaleImage(app.image, 1/10)
+    app.myPlayer = Player(500, 450, app.sprite)
     app.bulletCounter = 0
     app.time = 0
 
@@ -80,4 +82,4 @@ def redrawAll(app, canvas):
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
 
-# runApp(width = 1000, height = 500)
+runApp(width = 1000, height = 500)
