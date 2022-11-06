@@ -23,6 +23,7 @@ def appStarted(app):
     app.playerExplosion3 = app.scaleImage(app.explode3, 1/10)
     app.explode4 = app.loadImage("pExplosions_4.png")
     app.playerExplosion4 = app.scaleImage(app.explode4, 1/10)
+    app.explosionAnimation = [app.explode1, app.explode2, app.explode3, app.explode4]
 
 
     # bullet 
@@ -93,6 +94,7 @@ def redrawAll(app, canvas):
         app.background.drawLife(app, canvas, cx, cy, app.playerLives)
 
     app.myPlayer.redraw(app, canvas)
+    app.myPlayer.redrawExplosion(app, canvas, app.explosionAnimation)
     app.myPlayer.drawBullet(app, canvas)
 
     app.enemy.redraw(app, canvas)
