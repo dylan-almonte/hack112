@@ -27,6 +27,10 @@ def appStarted(app):
     app.playerExplosion4 = app.scaleImage(app.explode4, 1)
     app.explosionAnimation = [app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
 
+    # lives 
+    app.lives = app.loadImage('playerShip.png')
+    app.finalLives = app.scaleImage(app.lives, 1/25)
+
     # bullet 
     # from: https://toppng.com/photo/168502/alaga-galaga-missile
     app.bulletImage = app.loadImage("goodgalagamissile.png")
@@ -37,7 +41,7 @@ def appStarted(app):
     app.enemyImage = app.loadImage("bumblebee.png")
     app.enemySprite = app.scaleImage(app.enemyImage, 1/10)
 
-    app.background = Background(500, 500)
+    app.background = Background(500, 500, app.finalLives)
     app.totalTime = 0
     app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet, app.explosionAnimation)
 
@@ -58,6 +62,8 @@ def appStarted(app):
 
 
 
+
+
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
     app.enemy.updateEnemyTime()
@@ -72,6 +78,7 @@ def timerFired(app):
     app.myPlayer.timerFired(app)
     app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
     app.myPlayer.playerIsHit(app.enemy.bullets, app.background.lives)
+    
 
 def keyPressed(app, event):
     # temp
@@ -104,7 +111,7 @@ def redrawAll(app, canvas):
         for x in range(app.background.lives):
             cx = 280 + (40*x)
             cy = 480
-            app.background.drawLife(app, canvas, cx, cy, app.playerLives)
+            app.background.drawLife(app, canvas, cx, cy)
 
         app.myPlayer.redraw(app, canvas)
         app.myPlayer.redrawExplosion(app, canvas)

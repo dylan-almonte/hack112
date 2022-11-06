@@ -3,11 +3,12 @@ import random
 
 
 class Background(object):
-    def __init__(self, width, height):
+    def __init__(self, width, height, sprite):
         self.width = width  # width 500
         self.height = height  # height 500
         self.stars = []
         self.lives = 4 
+        self.sprite = sprite
 
     def drawRect(self, app, canvas):
         canvas.create_rectangle(
@@ -30,8 +31,8 @@ class Background(object):
                 canvas.create_oval(cx-r, cy-r, cx+r, cy+r, fill=f"{starColor}")
         
 
-    def drawLife(self, app, canvas, cx, cy, finalLives):
-        canvas.create_image(cx, cy, image = ImageTk.PhotoImage(finalLives))
+    def drawLife(self, app, canvas, cx, cy):
+        canvas.create_image(cx, cy, image = ImageTk.PhotoImage(self.sprite))
 
     def timerFired(self, app):
         app.totalTime += 1
@@ -45,8 +46,7 @@ class Background(object):
 def appStarted(app):
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.lives = app.loadImage('playerShip.png')
-    app.finalLives = app.scaleImage(app.lives, 1/25)
+
 
 
 def timerFired(app):
