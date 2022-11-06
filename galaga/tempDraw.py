@@ -49,7 +49,6 @@ def timerFired(app):
 
 def redrawAll(app, canvas):
     app.background.drawRect(app, canvas)
-    print(len(app.background.stars))
 
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
