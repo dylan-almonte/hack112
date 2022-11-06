@@ -1,8 +1,5 @@
-print("new")
-
 from cmu_112_graphics import *
 import random
-
 
 
 class Background(object):
@@ -63,6 +60,5 @@ def redrawAll(app, canvas):
         tlx = 260 + (40*x)
         tly = 460
         app.background.drawLife(app, canvas, tlx, tly, width)
-
 
 runApp(width = 1000,height = 500)
