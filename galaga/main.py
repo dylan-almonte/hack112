@@ -1,23 +1,30 @@
 from player import Player
 from cmu_112_graphics import *
 from Background import Background
-from enemyWave import EnemyWave
+# from enemyWave import EnemyWave
 from enemy import Enemy
 
 
 def appStarted(app):
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/10)
+
+    # temp
+    app.enemyImage = app.loadImage("bumblebee.png")
+    app.enemySprite = app.scaleImage(app.enemyImage, 1/2)
+
     app.background = Background(500, 500)
     app.totalTime = 0
     app.myPlayer = Player(500, 450, app.playerSprite)
-    app.enemyWave = EnemyWave()
+
+    app.enemy = Enemy(500, 20, app.enemySprite)
+
     app.bulletTime = 0
     app.bulletCounter = 0
 
 
 def timerFired(app):
-    app.enemyWave.spawnEnemy(app)
+    # app.enemyWave.spawnEnemy(app)
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1
@@ -25,8 +32,14 @@ def timerFired(app):
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
 
+    app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
+
 
 def keyPressed(app, event):
+    # temp
+    if event.key == 'e':
+        app.enemy.fireBullet()
+
     if event.key == "Left":
         app.myPlayer.leftMove()
     elif event.key == "Right":
@@ -54,7 +67,8 @@ def redrawAll(app, canvas):
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
 
-    app.enemyWave.drawEnemies(canvas)
+    app.enemy.redraw(app, canvas)
+    app.enemy.drawBullet(app, canvas)
 
 
 runApp(width=1000, height=500)

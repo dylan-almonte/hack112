@@ -57,15 +57,15 @@ class Enemy:
     def drawBullet(self, app, canvas):
         for b in self.bullets:
             x, y = b
-            r = 2
-            canvas.create(x-r, y-r, x+r, y+r, fill='red')
+            r = 5
+            canvas.create_oval(x-r, y-r, x+r, y+r, fill='red')
 
     def bulletMovement(self, app, p_x, p_y):  # timer fired
         for b in self.bullets:
             dx, dy = self.x - p_x, self.y - p_y
             b[0] += dx
-            b[1] -= dy
-            if b[1] + 5 < app.height:
+            b[1] += dy
+            if b[1] < app.height:
                 self.bullets.remove(b)
 
     # del enenmy fucnton
