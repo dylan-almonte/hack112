@@ -80,6 +80,8 @@ def keyPressed(app, event):
         if app.bulletCounter < 2:
             app.bulletCounter += 1
             app.myPlayer.fireBullet()
+    elif event.key == 'p':
+        app.startMenu = False
 
 def redrawAll(app, canvas):
     canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
@@ -88,6 +90,7 @@ def redrawAll(app, canvas):
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
+    
     if app.startMenu == False:
         for x in range(app.background.lives):
             cx = 280 + (40*x)
@@ -104,7 +107,7 @@ def redrawAll(app, canvas):
     if app.startMenu == True:
         canvas.create_image(500, 150, image = ImageTk.PhotoImage(app.menuPicture))
 
-        canvas.create_text(500, 250, text = "P r e s s  S p a c e  T o  P l a y", 
+        canvas.create_text(500, 250, text = "P r e s s  'P'  T o  P l a y", 
                             font = "system 15 bold italic", fill = 'red')
 
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
