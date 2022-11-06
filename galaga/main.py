@@ -67,50 +67,54 @@ def appStarted(app):
 
 
 def timerFired(app):
-    # app.enemyWave.spawnEnemy(app)
-    app.enemy.updateEnemyTime()
-    app.enemy.updateEnemyXpos()
-    app.enemy.updateEnemyYpos()
-    # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
-    app.background.timerFired(app)
-    app.background.newStar(app)
-    app.bulletTime += 1
-    if app.bulletTime % 5 == 0:
-        app.bulletCounter = 0
-    app.myPlayer.timerFired(app)
-    # app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
-    app.myPlayer.playerIsHit(app.enemy.bullets, app.background)
+    if app.gameOver == False:
+        if app.background.lives == 0:
+            app.gameOver = True
+        # app.enemyWave.spawnEnemy(app)
+        app.enemy.updateEnemyTime()
+        app.enemy.updateEnemyXpos()
+        app.enemy.updateEnemyYpos()
+        # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
+        app.background.timerFired(app)
+        app.background.newStar(app)
+        app.bulletTime += 1
+        if app.bulletTime % 5 == 0:
+            app.bulletCounter = 0
+        app.myPlayer.timerFired(app)
+        # app.enemy.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
+        app.myPlayer.playerIsHit(app.enemy.bullets, app.background)
 
-    app.enemyTime += 1
-    app.enemyTime %= 1000
+        app.enemyTime += 1
+        app.enemyTime %= 1000
 
-    if app.enemyTime % 25 == 0:
-        app.enemy.fireBullet(app.myPlayer.cx, app.myPlayer.cy)
+        if app.enemyTime % 25 == 0:
+            app.enemy.fireBullet(app.myPlayer.cx, app.myPlayer.cy)
 
-    app.enemy.bulletMovement(app)
+        app.enemy.bulletMovement(app)
 
 
 def keyPressed(app, event):
     # temp
-
-    if event.key == "Left":
-        app.myPlayer.leftMove()
-    elif event.key == "Right":
-        app.myPlayer.rightMove()
-    elif event.key == "Space":
-        if app.bulletCounter < 2:
-            app.bulletCounter += 1
-            app.myPlayer.fireBullet()
-    elif event.key == 'p':
-        app.startMenu = False
-    elif event.key == 'r':
-        app.startMenu = True
-        app.gameOver = False
+    if app.gameOver == False:
+        if event.key == "Left":
+            app.myPlayer.leftMove()
+        elif event.key == "Right":
+            app.myPlayer.rightMove()
+        elif event.key == "Space":
+            if app.bulletCounter < 2:
+                app.bulletCounter += 1
+                app.myPlayer.fireBullet()
+        elif event.key == 'p':
+            app.startMenu = False
+        elif event.key == 'r':
+            app.startMenu = True
+            app.gameOver = False
 
 
 def redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, app.width, app.height, fill="grey6")
     app.background.drawRect(app, canvas)
+    
 
     for star in app.background.stars:
         cx, cy, r, starColor, starState = star
