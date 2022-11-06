@@ -11,6 +11,7 @@ class Player(object):
         self.IsAlive = True
         self.IsHit = False
         self.bulletList = []
+        print(cx, cy)
 
     def redraw(self, app, canvas):
         canvas.create_image(self.cx,self.cy, image = ImageTk.PhotoImage(self.sprite))
@@ -53,7 +54,7 @@ class Player(object):
 
 
 # def appStarted(app):
-#     app.image = app.loadImage("bumblebee.png")
+#     app.image = app.loadImage("playerShip.png")
 #     app.sprite = app.scaleImage(app.image, 1/10)
 #     app.myPlayer = Player(500, 450, app.sprite)
 #     app.bulletCounter = 0
