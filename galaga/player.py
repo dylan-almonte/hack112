@@ -25,6 +25,7 @@ class Player(object):
             image = ImageTk.PhotoImage(self.sprite))
 
     def redrawExplosion(self, app, canvas):
+        print("draw explosion")
         if self.IsHit == True:
                 canvas.create_image(self.cx,self.cy,image = ImageTk.PhotoImage(self.exploSprite))
 
