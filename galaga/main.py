@@ -1,15 +1,19 @@
 from player import Player
 from cmu_112_graphics import *
 from Background import Background
+from enemyWave import EnemyWave
 
 
 def appStarted(app):
     app.background = Background(500, 500)
     app.totalTime = 0
     app.myPlayer = Player(500, 450)
+    app.enemyWave = EnemyWave()
 
 
 def timerFired(app):
+    app.enemyWave.spawnEnemy(app)
+
     app.background.timerFired(app)
     app.background.newStar(app)
     app.myPlayer.timerFired(app)
@@ -40,6 +44,8 @@ def redrawAll(app, canvas):
 
     app.myPlayer.redraw(app, canvas)
     app.myPlayer.drawBullet(app, canvas)
+
+    app.enemyWave.drawEnemies(canvas)
 
 
 runApp(width=1000, height=500)

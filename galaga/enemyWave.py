@@ -1,20 +1,23 @@
 import random
-import enemyWaveGenerator
+from enemyWaveGenerator import enemyWaveGenerator
 
 
-class EnemyWave ():
+class EnemyWave():
     enemyList = []
 
     def spawnEnemy(self, app):
         EnemyWave.enemyList.append(
             enemyWaveGenerator.spawnEnemy(self, app))
 
-    def moveEnemy(self):
+    def moveEnemy(self, time):
         for enemy in EnemyWave.enemyList:
-            vel = enemy.getVel
-            enemy.move(vel)
-            enemy.drawEnemy()
-        
+            vel = enemy.getVel(time)
+            enemy.move(vel[0], vel[1])
+            # enemy.drawEnemy()
+
+    def drawEnemies(self, canvas):
+        for enemy in EnemyWave.enemyList:
+            enemy.drawEnemy(canvas)
 
     def deleteEnemy(self, enemy):
 
