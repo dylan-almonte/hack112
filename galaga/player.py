@@ -53,33 +53,33 @@ class Player(object):
         return False
 
 
-def appStarted(app):
-    app.myPlayer = Player(500,450)
-    app.bulletCounter = 0
-    app.time = 0
+# def appStarted(app):
+#     app.myPlayer = Player(500,450)
+#     app.bulletCounter = 0
+#     app.time = 0
 
-def keyPressed(app, event):
-    if event.key == "Left":
-        app.myPlayer.leftMove()
-    elif event.key == "Right":
-        app.myPlayer.rightMove()
-    elif event.key == "Space":
-        if app.bulletCounter < 2:
-            app.bulletCounter += 1
-            app.myPlayer.fireBullet()
+# def keyPressed(app, event):
+#     if event.key == "Left":
+#         app.myPlayer.leftMove()
+#     elif event.key == "Right":
+#         app.myPlayer.rightMove()
+#     elif event.key == "Space":
+#         if app.bulletCounter < 2:
+#             app.bulletCounter += 1
+#             app.myPlayer.fireBullet()
 
 
     
-def timerFired(app):
+# def timerFired(app):
     
-    app.time += 1
-    if app.time % 5 == 0:
-        app.bulletCounter = 0
-    app.myPlayer.timerFired(app)
+#     app.time += 1
+#     if app.time % 5 == 0:
+#         app.bulletCounter = 0
+#     app.myPlayer.timerFired(app)
 
 
-def redrawAll(app, canvas):
-    app.myPlayer.redraw(app, canvas)
-    app.myPlayer.drawBullet(app, canvas)
+# def redrawAll(app, canvas):
+#     app.myPlayer.redraw(app, canvas)
+#     app.myPlayer.drawBullet(app, canvas)
 
 # runApp(width = 1000, height = 500)
