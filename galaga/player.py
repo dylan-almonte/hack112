@@ -35,7 +35,7 @@ class Player(object):
         for bullet in self.bulletList:
             cx, cy, state = bullet
             if state:
-                canvas.create_image(cx,cy, image = ImageTk.PhotoImage(self.bulletSprite)
+                canvas.create_image(cx,cy, image = ImageTk.PhotoImage(self.bulletSprite))
 
     def timerFired(self, app):
         for bullet in self.bulletList:
