@@ -3,6 +3,7 @@ from cmu_112_graphics import *
 from Background import Background
 # from enemyWave import EnemyWave
 from enemy import Enemy
+from Score import Score 
 
 
 def appStarted(app):
@@ -74,6 +75,9 @@ def redrawAll(app, canvas):
 
     app.enemy.redraw(app, canvas)
     app.enemy.drawBullet(app, canvas)
+
+    canvas.create_text(100, 50, text= f"{app.Score.score}",
+                                    font = "system 20 bold")
 
 
 runApp(width=1000, height=500)
