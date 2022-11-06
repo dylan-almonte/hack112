@@ -41,7 +41,7 @@ class Player(object):
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
-            bullet[1] -= 15
+            bullet[1] -= 30
 
     def playerIsHit(self, enemyMissiles):
         for missile in enemyMissiles:
