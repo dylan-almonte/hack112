@@ -51,7 +51,7 @@ def keyPressed(app, event):
             app.myPlayer.fireBullet()
 
 def redrawAll(app, canvas):
-    canvas.create_rectangle(0,0,app.width,app.height, fill = "grey8")
+    canvas.create_rectangle(0,0,app.width,app.height, fill = "grey6")
     app.background.drawRect(app, canvas)
 
     for star in app.background.stars:
