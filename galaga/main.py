@@ -93,12 +93,7 @@ def redrawAll(app, canvas):
     app.enemy.redraw(app, canvas)
     app.enemy.drawBullet(app, canvas)
 
-<<<<<<< HEAD
-
-
-=======
     canvas.create_text(100, 50, text= f"SCORE:\n      {app.score.score}",
                         font = "system 20 bold", fill = "grey30")
->>>>>>> 5d092609981716838a1d753704590f174714eb45
 
 runApp(width=1000, height=500)
