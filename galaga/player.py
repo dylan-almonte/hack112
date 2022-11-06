@@ -46,7 +46,6 @@ class Player(object):
     def playerIsHit(self, enemyMissiles):
         for missile in enemyMissiles:
             cx, cy = missile[0], missile[1]
-
             if (abs(cx - self.cx) < self.radius and
                     abs(cy - self.cy) < self.radius):
                 return True
