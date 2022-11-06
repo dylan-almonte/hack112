@@ -7,10 +7,22 @@ from enemy1 import enemy1
 from Score import Score
 
 def appStarted(app):
+    # player ship
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/30)
-
+        # lives
     app.playerLives = app.scaleImage(app.playerImage, 1/30)
+
+        # explosion stages 1-4
+    app.explode1 = app.loadImage("pExplosion_1.png")
+    app.playerExplosion1 = app.scaleImage(app.explode1, 1/10)
+    app.explode2 = app.loadImage("pExplosions_2.png")
+    app.playerExplosion2 = app.scaleImage(app.explode2, 1/10)
+    app.explode3 = app.loadImage("pExplosion_3.png")
+    app.playerExplosion3 = app.scaleImage(app.explode3, 1/10)
+    app.explode4 = app.loadImage("pExplosions_4.png")
+    app.playerExplosion4 = app.scaleImage(app.explode4, 1/10)
+
 
     # bullet 
     app.bulletImage = app.loadImage("goodgalagamissile.png")
