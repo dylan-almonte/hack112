@@ -7,7 +7,7 @@ class Enemy:
         drawImageWithSizeBelowIt(app, canvas, app.image1, 200, 300)
         drawImageWithSizeBelowIt(app, canvas, app.image2, 500, 300)'''
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, sprite):
         self.health: int = 2
         """
         positition of Enemy
@@ -16,6 +16,9 @@ class Enemy:
         self.y: int = y
         self.size: int = 0
         self.bullets: list = []
+
+        # temporaty
+        self.sprite = sprite
 
     def isHit(self, player_missles) -> bool:
         '''
@@ -39,6 +42,10 @@ class Enemy:
     #     self.y += yVel
     # TODO  create a different function that updates the enmeny posistion
 
+    def redraw(self, app, canvas):
+        canvas.create_image(
+            self.x, self.y, image=ImageTk.PhotoImage(self.sprite))
+
     def updateEnemyPos(self, x, y):
         self.x = x
         self.y = y
@@ -58,6 +65,8 @@ class Enemy:
             dx, dy = self.x - p_x, self.y - p_y
             b[0] += dx
             b[1] -= dy
+            if b[1] + 5 < app.height:
+                self.bullets.remove(b)
 
     # del enenmy fucnton
     # move funciton

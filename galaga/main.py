@@ -2,6 +2,7 @@ from player import Player
 from cmu_112_graphics import *
 from Background import Background
 from enemyWave import EnemyWave
+from enemy import Enemy
 
 
 def appStarted(app):
@@ -9,7 +10,7 @@ def appStarted(app):
     app.playerSprite = app.scaleImage(app.playerImage, 1/10)
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450,app.playerSprite)
+    app.myPlayer = Player(500, 450, app.playerSprite)
     app.enemyWave = EnemyWave()
     app.bulletTime = 0
     app.bulletCounter = 0
@@ -23,6 +24,7 @@ def timerFired(app):
     if app.bulletTime % 5 == 0:
         app.bulletCounter = 0
     app.myPlayer.timerFired(app)
+
 
 def keyPressed(app, event):
     if event.key == "Left":
