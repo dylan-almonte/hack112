@@ -4,7 +4,6 @@ from Background import Background
 # from enemyWave import EnemyWave
 from enemyWave import EnemyWave
 from enemy1 import enemy1
-from Score import Score
 import time
 
 
@@ -80,7 +79,7 @@ def appStarted(app):
     app.enExplode5 = app.loadImage("enemyExplosion_5.png")
     app.enemyExplosion5 = app.scaleImage(app.enExplode5, 1/2)
 
-    app.score = Score()
+    app.score = 0
 
     # start screen
     app.menu = app.loadImage("startScreen.png")
@@ -118,8 +117,10 @@ def timerFired(app):
 
         app.enemyTime += 1
         app.enemyTime %= 1000
+        if app.enemyWave.updateScore(app.myPlayer.bulletList):
+            app.score += 20
         app.enemyWave.EnemyHit(app.myPlayer.bulletList)
-
+        
 
 def keyPressed(app, event):
     # temp
@@ -173,7 +174,7 @@ def redrawAll(app, canvas):
                            font="system 25 bold", fill='red')
         canvas.create_text(500, 350, text="Press 'r' to restart", fill='red')
 
-    canvas.create_text(100, 50, text=f"SCORE:\n      {app.score.score}",
+    canvas.create_text(100, 50, text=f"SCORE:\n      {app.score}",
                        font="system 20 bold", fill="grey30")
 
 
