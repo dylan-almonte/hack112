@@ -17,11 +17,11 @@ class Player(object):
 
     def leftMove(self):
         if self.cx-10 > 250:
-            self.cx -= 5
+            self.cx -= 10
 
     def rightMove(self):
         if self.cx+10 < 750:
-            self.cx += 5
+            self.cx += 10
 
     def fireBullet(self):
         bullet = [self.cx,self.cy-20,True]
@@ -36,10 +36,11 @@ class Player(object):
 
     def timerFired(self,app):
         for bullet in self.bulletList:
-            bullet[1] -= 10
-        
-
-    
+            print(self.bulletList)
+            if bullet[1] + 5 < 0:
+                self.bulletList.remove(bullet)
+            bullet[1] -= 15
+            
 
 def appStarted(app):
     app.myPlayer = Player(500,450)
