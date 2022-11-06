@@ -42,27 +42,27 @@ class Background(object):
             star[4] *= -1
 
 
-def appStarted(app):
-    app.background = Background(500, 500)
-    app.totalTime = 0
+# def appStarted(app):
+#     app.background = Background(500, 500)
+#     app.totalTime = 0
 
 
-def timerFired(app):
-    app.background.timerFired(app)
-    app.background.newStar(app)
+# def timerFired(app):
+#     app.background.timerFired(app)
+#     app.background.newStar(app)
 
 
-def redrawAll(app, canvas):
-    app.background.drawRect(app, canvas)
+# def redrawAll(app, canvas):
+#     app.background.drawRect(app, canvas)
 
-    for star in app.background.stars:
-        cx, cy, r, starColor, starState = star
-        app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
+#     for star in app.background.stars:
+#         cx, cy, r, starColor, starState = star
+#         app.background.drawStar(app, canvas, cx, cy, r, starColor, starState)
 
-    for x in range(app.background.lives):
-        width = 30
-        tlx = 260 + (40*x)
-        tly = 460
-        app.background.drawLife(app, canvas, tlx, tly, width)
+#     for x in range(app.background.lives):
+#         width = 30
+#         tlx = 260 + (40*x)
+#         tly = 460
+#         app.background.drawLife(app, canvas, tlx, tly, width)
 
 # runApp(width = 1000,height = 500)
