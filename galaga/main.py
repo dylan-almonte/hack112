@@ -66,6 +66,7 @@ def appStarted(app):
 
 def timerFired(app):
     # app.enemyWave.spawnEnemy(app)
+    print(lives)
     app.enemy.updateEnemyTime()
     app.enemy.updateEnemyXpos()
     app.enemy.updateEnemyYpos()

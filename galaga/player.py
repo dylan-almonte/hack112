@@ -65,9 +65,6 @@ class Player(object):
             elif elapsedTime < .4:
                 self.exploSprite = self.explosionSprite[3]
 
-
-
-
         for bullet in self.bulletList:
             if bullet[1] + 5 < 0:
                 self.bulletList.remove(bullet)
@@ -80,7 +77,6 @@ class Player(object):
                 if (abs(cx - self.cx) < self.radius and abs(cy - self.cy) < self.radius):
                     self.IsHit = True
                     lives -= 1
-                    print(lives)
                     self.baseTime = time.time()
                     return True
             return False
