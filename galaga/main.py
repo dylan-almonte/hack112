@@ -21,7 +21,7 @@ def appStarted(app):
 
     app.background = Background(500, 500)
     app.totalTime = 0
-    app.myPlayer = Player(500, 450, app.playerSprite)
+    app.myPlayer = Player(500, 450, app.playerSprite, app.playerBullet)
 
     app.enemy = Enemy(500, 20, app.enemySprite)
 
