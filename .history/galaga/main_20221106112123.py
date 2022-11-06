@@ -66,7 +66,6 @@ def timerFired(app):
         app.enemyWave.spawnEnemy(app)
         app.enemySpawnTime = 0
     # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
-    app.enemyWave.moveEnemies()
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1

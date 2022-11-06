@@ -26,11 +26,12 @@ class enemy1(Enemy):
     dx = (boardRight - boardLeft)/horizontalTime
     dy = 30/2
 
-    def __init__(self, x, y, app):
-        super().__init__(x, y, app)
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.x = 0
+        self.y = 0
         #Enemy image
-        self.sprite = app.loadImage('bumblebee.png')
-        app.enemyImage = app.scaleImage(self.sprite, 1/10)
+        self.enemyImage = self.loadImage('enemy_bumblebee.png')
         
 
         # self.moveBasic = [[1, 0]
@@ -40,9 +41,8 @@ class enemy1(Enemy):
 
 
 
-    def drawEnemy(self, app, canvas):
-        canvas.create_image(self.x, self.y,
-        image = ImageTk.PhotoImage(app.enemyImage))
+    def drawEnemy(self, canvas, app):
+        app.playerExplosion2 = app.scaleImage(self.enemyImage, 1)
 
     def updateEnemyXpos(self):
         time = self.time 

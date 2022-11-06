@@ -10,7 +10,8 @@ class enemyWaveGenerator():
         pass
 
     def spawnEnemy(self, app):
-        position = random.randint(250, 750)
-
-        a = enemy1(position, 10, app)
+        position = random.randint(0, 10)
+        boardCell = 50
+        xPos = position * boardCell + 250
+        a = enemy1(xPos, 10, app)
         return a

@@ -15,7 +15,7 @@ class EnemyWave():
             enemy.updateEnemyTime()
             enemy.updateEnemyXpos()
             enemy.updateEnemyYpos()
-
+            enemy.drawEnemy()
 
     def drawEnemies(self, app, canvas):
         for enemy in EnemyWave.enemyList:

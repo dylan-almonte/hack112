@@ -49,7 +49,6 @@ def appStarted(app):
 
     app.bulletTime = 0
     app.bulletCounter = 0
-    app.enemySpawnTime = 0
 
     app.score = Score()
 
@@ -60,19 +59,20 @@ def appStarted(app):
     app.startMenu = True
     app.gameOver = False
 
+
+
+
+
+
 def timerFired(app):
-    app.enemySpawnTime += 1
-    if app.enemySpawnTime - 10 == 0:
-        app.enemyWave.spawnEnemy(app)
-        app.enemySpawnTime = 0
+    app.enemyWave.spawnEnemy(app)
+    print(app.enemyWave.enemyList)
     # print((app.enemy.time - app.enemy.curveTime)%app.enemy.period)
-    app.enemyWave.moveEnemies()
     app.background.timerFired(app)
     app.background.newStar(app)
     app.bulletTime += 1
     if app.bulletTime % 5 == 0:
         app.bulletCounter = 0
-        
     app.myPlayer.timerFired(app)
     app.enemyWave.bulletMovement(app, app.myPlayer.cx, app.myPlayer.cy)
     app.myPlayer.playerIsHit(app.enemyWave.bulletList, app.background.lives)

@@ -1,8 +1,7 @@
 from cmu_112_graphics import *
 from enemy import Enemy
-import math
 
-class enemy1(Enemy):
+class enemy2(Enemy):
     # TODO change to custom movements and timeToMove
     curveTime = 20
 
@@ -26,11 +25,10 @@ class enemy1(Enemy):
     dx = (boardRight - boardLeft)/horizontalTime
     dy = 30/2
 
-    def __init__(self, x, y, app):
-        super().__init__(x, y, app)
-        #Enemy image
-        self.sprite = app.loadImage('bumblebee.png')
-        app.enemyImage = app.scaleImage(self.sprite, 1/10)
+    def __init__(self, x, y, sprite):
+        super().__init__(x, y, sprite)
+        self.x = 0
+        self.y = 0
         
 
         # self.moveBasic = [[1, 0]
@@ -38,11 +36,9 @@ class enemy1(Enemy):
         #                   [0, 1]]
         # self.timeToMove = 42
 
-
-
-    def drawEnemy(self, app, canvas):
-        canvas.create_image(self.x, self.y,
-        image = ImageTk.PhotoImage(app.enemyImage))
+    def drawEnemy(self, canvas):
+        canvas.create_oval(self.x-5, self.y-5, self.x+5, self.y+5,
+                           fill='red')
 
     def updateEnemyXpos(self):
         time = self.time 

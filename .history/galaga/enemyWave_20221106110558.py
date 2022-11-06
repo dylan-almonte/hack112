@@ -4,7 +4,6 @@ from enemyWaveGenerator import enemyWaveGenerator
 
 class EnemyWave():
     enemyList = []
-    bulletList =[]
 
     def spawnEnemy(self, app):
         EnemyWave.enemyList.append(
@@ -15,7 +14,7 @@ class EnemyWave():
             enemy.updateEnemyTime()
             enemy.updateEnemyXpos()
             enemy.updateEnemyYpos()
-
+            enemy.drawEnemy()
 
     def drawEnemies(self, app, canvas):
         for enemy in EnemyWave.enemyList:
@@ -25,11 +24,7 @@ class EnemyWave():
     def bulletMovement(self, app, playerX, playerY):
         for enemy in EnemyWave.enemyList:
             enemy.bulletMovement(app, playerX, playerY)
-    
-    def updateBullets(self):
-        EnemyWave.bulletList = []
-        for enemy in EnemyWave.enemyList:
-            EnemyWave.bulletList.extend(enemy.bulletList)
+
 
     def deleteEnemy(self, enemy):
 

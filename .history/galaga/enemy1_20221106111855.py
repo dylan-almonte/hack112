@@ -30,7 +30,7 @@ class enemy1(Enemy):
         super().__init__(x, y, app)
         #Enemy image
         self.sprite = app.loadImage('bumblebee.png')
-        app.enemyImage = app.scaleImage(self.sprite, 1/10)
+        app.enemyImage = app.scaleImage(self.sprite, 1/4)
         
 
         # self.moveBasic = [[1, 0]
