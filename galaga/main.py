@@ -9,27 +9,31 @@ import time
 
 def appStarted(app):
     # player ship
+    # from: https://www.pngfind.com/mpng/iimowwo_galaga-galaga-ship-hd-png-download/
     app.playerImage = app.loadImage("playerShip.png")
     app.playerSprite = app.scaleImage(app.playerImage, 1/30)
         # lives
     app.playerLives = app.scaleImage(app.playerImage, 1/30)
 
         # explosion stages 1-4
+    # all from: https://www.spriters-resource.com/fullview/26482/
     app.explode1 = app.loadImage("pExplosion_1.png")
-    app.playerExplosion1 = app.scaleImage(app.explode1, 1/2.5)
+    app.playerExplosion1 = app.scaleImage(app.explode1, 1)
     app.explode2 = app.loadImage("pExplosions_2.png")
-    app.playerExplosion2 = app.scaleImage(app.explode2, 1/2.5)
+    app.playerExplosion2 = app.scaleImage(app.explode2, 1)
     app.explode3 = app.loadImage("pExplosion_3.png")
-    app.playerExplosion3 = app.scaleImage(app.explode3, 1/2.5)
+    app.playerExplosion3 = app.scaleImage(app.explode3, 1)
     app.explode4 = app.loadImage("pExplosions_4.png")
-    app.playerExplosion4 = app.scaleImage(app.explode4, 1/2.5)
+    app.playerExplosion4 = app.scaleImage(app.explode4, 1)
     app.explosionAnimation = [app.playerExplosion1, app.playerExplosion2, app.playerExplosion3, app.playerExplosion4]
 
     # bullet 
+    # from: https://toppng.com/photo/168502/alaga-galaga-missile
     app.bulletImage = app.loadImage("goodgalagamissile.png")
     app.playerBullet = app.scaleImage(app.bulletImage, 1/80)
 
     # temp
+    # from: https://charactercommunity.fandom.com/wiki/Bumblebee
     app.enemyImage = app.loadImage("bumblebee.png")
     app.enemySprite = app.scaleImage(app.enemyImage, 1/10)
 
@@ -46,6 +50,7 @@ def appStarted(app):
 
     # start screen
     app.menu = app.loadImage("startScreen.png")
+    # from: https://downloads.khinsider.com/game-soundtracks/album/galaga-arcade
     app.menuPicture = app.scaleImage(app.menu, 1/2)
     app.startMenu = True
     app.gameOver = False
